@@ -1,0 +1,15 @@
+[project]
+name = "model-export"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "coremltools>=9.0",
+    "ultralytics>=8.4.34",
+    # coremltools 9.0 only supports torch up to 2.7.x — newer torch produces ops the converter can't lower
+    "torch>=2.7.0,<2.8.0",
+    "torchvision>=0.22.0,<0.23.0",
+    # numpy 2.4.0+ breaks coremltools array-to-scalar conversion (apple/coremltools#2633)
+    "numpy<2.4.0",
+]

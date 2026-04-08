@@ -1,0 +1,52 @@
+name: WoundDetector
+options:
+  bundleIdPrefix: com.eleg5600
+  deploymentTarget:
+    iOS: "16.0"
+
+packages:
+  YOLO:
+    url: https://github.com/ethanlee928/yolo-ios-app.git
+    branch: main
+
+targets:
+  WoundDetector:
+    type: application
+    platform: iOS
+    sources:
+      - Sources
+      - path: Resources/yolo26n-seg.mlpackage
+        type: folder
+      - path: Resources/yolo26s-seg.mlpackage
+        type: folder
+      - path: Resources/yolo26m-seg.mlpackage
+        type: folder
+      - path: Resources/wound-yolo26n-seg.mlpackage
+        type: folder
+      - path: Resources/wound-yolo26s-seg.mlpackage
+        type: folder
+    info:
+      path: Info.plist
+      properties:
+        UILaunchStoryboardName: ""
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSCameraUsageDescription: "WoundDetector needs camera access to take photos for wound detection and staging."
+        NSPhotoLibraryUsageDescription: "WoundDetector needs photo library access to select images for wound detection."
+        NSPhotoLibraryAddUsageDescription: "WoundDetector needs permission to save annotated wound images to your photo library."
+    dependencies:
+      - package: YOLO
+    scheme:
+      testTargets:
+        - WoundDetectorTests
+
+  WoundDetectorTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - Tests
+    dependencies:
+      - target: WoundDetector

@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+
+# Python / uv
+model-export/.venv/
+__pycache__/
+*.pyc
+
+# ML model artifacts — never tracked in git.
+# COCO `.pt` files are auto-downloaded by ultralytics on first use.
+# Fine-tuned `wound-*.pt` checkpoints live on the training server
+# (scp from /home/ethanlee/wound-segmentation-yolo/runs/.../weights/best.pt).
+# `.mlpackage` exports are regenerated locally with
+# `uv run yolo export model=<file>.pt format=coreml imgsz=512 nms=False`.
+*.pt
+*.mlpackage/
+
+# Local IDE / agent state
+.claude/
+
+# Stray `/export` chat dumps
+WoundDetector/2026-*-command-message*.txt
