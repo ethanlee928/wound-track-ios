@@ -25,6 +25,8 @@ targets:
         type: folder
       - path: Resources/wound-yolo26s-seg.mlpackage
         type: folder
+      - path: Resources/wound-stage-yolo26n-cls.mlpackage
+        type: folder
     info:
       path: Info.plist
       properties:

@@ -94,4 +94,16 @@ enum ModelVariant: String, CaseIterable, Identifiable {
     static func variant(task: Task, size: Size) -> ModelVariant? {
         ModelVariant.allCases.first { $0.task == task && $0.size == size }
     }
+
+    /// Name of the paired SGIE stage classifier model, if any.
+    /// Always uses the nano cls variant (3 MB, <10ms on Neural Engine) —
+    /// the cls model is so cheap that matching seg size adds no benefit.
+    /// Returns nil for COCO models (no staging).
+    var stageClassifierName: String? {
+        switch self {
+        // PLACEHOLDER: swap for DFUC 2021 classifier when available
+        case .woundNano, .woundSmall: return "wound-stage-yolo26n-cls"
+        default: return nil
+        }
+    }
 }

@@ -32,3 +32,4 @@ __pycache__/
 
 # Stray `/export` chat dumps
 WoundDetector/2026-*-command-message*.txt
+.gstack/
