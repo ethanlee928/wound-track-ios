@@ -2,7 +2,7 @@ name: WoundDetector
 options:
   bundleIdPrefix: com.eleg5600
   deploymentTarget:
-    iOS: "16.0"
+    iOS: "17.0"
 
 packages:
   YOLO:
