@@ -13,8 +13,12 @@ targets:
   WoundDetector:
     type: application
     platform: iOS
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     sources:
       - Sources
+      - Resources/Assets.xcassets
       - path: Resources/yolo26n-seg.mlpackage
         type: folder
       - path: Resources/yolo26s-seg.mlpackage

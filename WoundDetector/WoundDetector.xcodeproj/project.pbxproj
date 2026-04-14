@@ -12,19 +12,20 @@
 		24E6B53C5E2C04B84F80732F /* StageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415B5E0CE81EDC875513140 /* StageClassifier.swift */; };
 		2DD973A2951FD48933DAE4D9 /* PhotoLibraryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CEF4866E1B6728F87EDBBE /* PhotoLibraryPicker.swift */; };
 		309C11A2863AA9FDDBFAAB87 /* ModelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1098B0D648F08640AD2723 /* ModelPickerView.swift */; };
+		667E4A27088F14EBDF67D0EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3AF03074B1F48365827BDEE /* Assets.xcassets */; };
 		748F225FC85DC6D5A182145D /* DetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE95C359DC8B96DBF3759 /* DetectionViewModel.swift */; };
 		78D24EE0D60CBB0426D75D75 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87445CC5446D0E70EA461E3 /* ImagePicker.swift */; };
 		9695842B84EBC8BB2ADA2BE7 /* WoundStageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01AF9014B4AD0B65F743CB /* WoundStageTests.swift */; };
-		A6F81BDF65FDA4C8972D4069 /* yolo26s-seg.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 7007360E7D297B4D756B158A /* yolo26s-seg.mlpackage */; };
+		A6F81BDF65FDA4C8972D4069 /* yolo26s-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 7007360E7D297B4D756B158A /* yolo26s-seg.mlpackage */; };
 		A780DD679FF740AD29C7D765 /* WoundDetectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED22B1300FA732A66AC309A4 /* WoundDetectorApp.swift */; };
-		BB92B9054C53D17FC8ED58F4 /* wound-stage-yolo26n-cls.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 488FB3606A25DFB768F7EE8B /* wound-stage-yolo26n-cls.mlpackage */; };
-		C7E493EAE8BF677CE3BE17E1 /* yolo26m-seg.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C63C6BDE2320DCB78421EDF6 /* yolo26m-seg.mlpackage */; };
+		BB92B9054C53D17FC8ED58F4 /* wound-stage-yolo26n-cls.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 488FB3606A25DFB768F7EE8B /* wound-stage-yolo26n-cls.mlpackage */; };
+		C7E493EAE8BF677CE3BE17E1 /* yolo26m-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = C63C6BDE2320DCB78421EDF6 /* yolo26m-seg.mlpackage */; };
 		DC7584B391E39F4B1FB81694 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233FE2FBD92A206158E2E4DB /* ContentView.swift */; };
-		DD086787E7E0C5761DD3A589 /* wound-yolo26s-seg.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = CA1CEEE1202EE3EBFA1D7546 /* wound-yolo26s-seg.mlpackage */; };
-		E2D01D23B88EC16FD8D68BAE /* yolo26n-seg.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 41B24B4DC394224E087EF0CE /* yolo26n-seg.mlpackage */; };
+		DD086787E7E0C5761DD3A589 /* wound-yolo26s-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = CA1CEEE1202EE3EBFA1D7546 /* wound-yolo26s-seg.mlpackage */; };
+		E2D01D23B88EC16FD8D68BAE /* yolo26n-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 41B24B4DC394224E087EF0CE /* yolo26n-seg.mlpackage */; };
 		E962D55F9C87597DE07B09CB /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032E863EDBE0BDAA3F4BA216 /* ShareSheet.swift */; };
 		EB29FB63CF9782A41A2D3AB6 /* WoundStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E51D17F482B0921C304388B /* WoundStage.swift */; };
-		EE275FD02063C111BAE36EE0 /* wound-yolo26n-seg.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = DFF82BC484A520482D79C11D /* wound-yolo26n-seg.mlpackage */; };
+		EE275FD02063C111BAE36EE0 /* wound-yolo26n-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = DFF82BC484A520482D79C11D /* wound-yolo26n-seg.mlpackage */; };
 		FE038D43DD435D2C7024419A /* WoundInfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD903DE478D0ECA2DF7392 /* WoundInfoPanel.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,17 +47,18 @@
 		19FD903DE478D0ECA2DF7392 /* WoundInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundInfoPanel.swift; sourceTree = "<group>"; };
 		233FE2FBD92A206158E2E4DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2CAAE95C359DC8B96DBF3759 /* DetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionViewModel.swift; sourceTree = "<group>"; };
-		41B24B4DC394224E087EF0CE /* yolo26n-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = "yolo26n-seg.mlpackage"; path = "Resources/yolo26n-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
-		488FB3606A25DFB768F7EE8B /* wound-stage-yolo26n-cls.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = "wound-stage-yolo26n-cls.mlpackage"; path = "Resources/wound-stage-yolo26n-cls.mlpackage"; sourceTree = SOURCE_ROOT; };
+		41B24B4DC394224E087EF0CE /* yolo26n-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26n-seg.mlpackage"; path = "Resources/yolo26n-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		488FB3606A25DFB768F7EE8B /* wound-stage-yolo26n-cls.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-stage-yolo26n-cls.mlpackage"; path = "Resources/wound-stage-yolo26n-cls.mlpackage"; sourceTree = SOURCE_ROOT; };
 		56284EB0E5CD22A1D278625F /* WoundDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoundDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A01AF9014B4AD0B65F743CB /* WoundStageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundStageTests.swift; sourceTree = "<group>"; };
 		6C3C258BAF18A6BDA9CBA97B /* ModelVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVariant.swift; sourceTree = "<group>"; };
-		7007360E7D297B4D756B158A /* yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = "yolo26s-seg.mlpackage"; path = "Resources/yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		7007360E7D297B4D756B158A /* yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26s-seg.mlpackage"; path = "Resources/yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		A3AF03074B1F48365827BDEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B87445CC5446D0E70EA461E3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C41C25534970C167B2D32A79 /* WoundDetectorTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WoundDetectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C63C6BDE2320DCB78421EDF6 /* yolo26m-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = "yolo26m-seg.mlpackage"; path = "Resources/yolo26m-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
-		CA1CEEE1202EE3EBFA1D7546 /* wound-yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = "wound-yolo26s-seg.mlpackage"; path = "Resources/wound-yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
-		DFF82BC484A520482D79C11D /* wound-yolo26n-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = "wound-yolo26n-seg.mlpackage"; path = "Resources/wound-yolo26n-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		C63C6BDE2320DCB78421EDF6 /* yolo26m-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26m-seg.mlpackage"; path = "Resources/yolo26m-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		CA1CEEE1202EE3EBFA1D7546 /* wound-yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-yolo26s-seg.mlpackage"; path = "Resources/wound-yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		DFF82BC484A520482D79C11D /* wound-yolo26n-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-yolo26n-seg.mlpackage"; path = "Resources/wound-yolo26n-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
 		EC1098B0D648F08640AD2723 /* ModelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPickerView.swift; sourceTree = "<group>"; };
 		ED22B1300FA732A66AC309A4 /* WoundDetectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundDetectorApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E8C053305EAD803B7FD7AA7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A3AF03074B1F48365827BDEE /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		767A75673461A5B8A8C8A35D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,7 @@
 				C63C6BDE2320DCB78421EDF6 /* yolo26m-seg.mlpackage */,
 				41B24B4DC394224E087EF0CE /* yolo26n-seg.mlpackage */,
 				7007360E7D297B4D756B158A /* yolo26s-seg.mlpackage */,
+				4E8C053305EAD803B7FD7AA7 /* Resources */,
 				767A75673461A5B8A8C8A35D /* Sources */,
 				FD4C5FBAA6AEADC604FE85E0 /* Tests */,
 				E8DECB499CCF264579504DCF /* Products */,
@@ -201,6 +212,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				667E4A27088F14EBDF67D0EA /* Assets.xcassets in Resources */,
+				BB92B9054C53D17FC8ED58F4 /* wound-stage-yolo26n-cls.mlpackage in Resources */,
+				EE275FD02063C111BAE36EE0 /* wound-yolo26n-seg.mlpackage in Resources */,
+				DD086787E7E0C5761DD3A589 /* wound-yolo26s-seg.mlpackage in Resources */,
+				C7E493EAE8BF677CE3BE17E1 /* yolo26m-seg.mlpackage in Resources */,
+				E2D01D23B88EC16FD8D68BAE /* yolo26n-seg.mlpackage in Resources */,
+				A6F81BDF65FDA4C8972D4069 /* yolo26s-seg.mlpackage in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,12 +248,6 @@
 				A780DD679FF740AD29C7D765 /* WoundDetectorApp.swift in Sources */,
 				FE038D43DD435D2C7024419A /* WoundInfoPanel.swift in Sources */,
 				EB29FB63CF9782A41A2D3AB6 /* WoundStage.swift in Sources */,
-				A6F81BDF65FDA4C8972D4069 /* yolo26s-seg.mlpackage in Sources */,
-				BB92B9054C53D17FC8ED58F4 /* wound-stage-yolo26n-cls.mlpackage in Sources */,
-				C7E493EAE8BF677CE3BE17E1 /* yolo26m-seg.mlpackage in Sources */,
-				DD086787E7E0C5761DD3A589 /* wound-yolo26s-seg.mlpackage in Sources */,
-				E2D01D23B88EC16FD8D68BAE /* yolo26n-seg.mlpackage in Sources */,
-				EE275FD02063C111BAE36EE0 /* wound-yolo26n-seg.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
