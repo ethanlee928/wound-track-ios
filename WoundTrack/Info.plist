@@ -19,11 +19,11 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSCameraUsageDescription</key>
-	<string>WoundDetector needs camera access to take photos for wound detection and staging.</string>
+	<string>WoundTrack needs camera access to take photos for wound detection and staging.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>WoundDetector needs permission to save annotated wound images to your photo library.</string>
+	<string>WoundTrack needs permission to save annotated wound images to your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>WoundDetector needs photo library access to select images for wound detection.</string>
+	<string>WoundTrack needs photo library access to select images for wound detection.</string>
 	<key>UILaunchStoryboardName</key>
 	<string></string>
 	<key>UISupportedInterfaceOrientations</key>

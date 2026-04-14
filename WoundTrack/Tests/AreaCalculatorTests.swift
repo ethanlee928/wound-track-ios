@@ -1,7 +1,7 @@
 import CoreVideo
 import XCTest
 import simd
-@testable import WoundDetector
+@testable import WoundTrack
 
 final class AreaCalculatorTests: XCTestCase {
 

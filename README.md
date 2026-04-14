@@ -1,4 +1,4 @@
-# WoundDetector
+# WoundTrack
 
 On-device wound segmentation iOS app powered by **YOLO26-seg** running through CoreML. Final project for **ELEG5600 (CUHK)**.
 
@@ -22,14 +22,14 @@ The app lets a user pick or capture a photo, runs instance segmentation entirely
 
 ```
 final-project/
-├── WoundDetector/        # SwiftUI iOS app (xcodegen-driven)
+├── WoundTrack/        # SwiftUI iOS app (xcodegen-driven)
 └── model-export/         # Python uv project for CoreML export
 ```
 
 The two components are loosely coupled:
 
 1. **`model-export/`** turns Ultralytics `.pt` checkpoints into CoreML `.mlpackage` files at the right input resolution.
-2. **`WoundDetector/`** bundles those `.mlpackage` files as build resources, compiles them to `.mlmodelc` at build time, and loads them on-device via the `YOLO` Swift package.
+2. **`WoundTrack/`** bundles those `.mlpackage` files as build resources, compiles them to `.mlmodelc` at build time, and loads them on-device via the `YOLO` Swift package.
 
 Training itself happens outside this repo on a GPU server — only the resulting checkpoints flow back here.
 
@@ -54,11 +54,11 @@ The **medium wound variant was trained but discarded**: it overfit on the small 
 ## Project structure
 
 ```
-WoundDetector/
+WoundTrack/
 ├── project.yml                          # xcodegen source of truth
 ├── Info.plist                           # camera/photo library usage strings
 ├── Sources/
-│   ├── WoundDetectorApp.swift           # @main entry
+│   ├── WoundTrackApp.swift              # @main entry
 │   ├── ContentView.swift                # main screen layout
 │   ├── DetectionViewModel.swift         # model loading + inference orchestration
 │   ├── ModelVariant.swift               # 5-case enum, Task × Size
@@ -111,20 +111,20 @@ uv run yolo export model=wound-yolo26n-seg.pt format=coreml imgsz=512
 uv run yolo export model=wound-yolo26s-seg.pt format=coreml imgsz=512
 
 # Move the exports into the iOS app's resources
-cp -R wound-yolo26n-seg.mlpackage   ../WoundDetector/Resources/
-cp -R wound-yolo26s-seg.mlpackage   ../WoundDetector/Resources/
-cp -R yolo26n-seg.mlpackage         ../WoundDetector/Resources/
-cp -R yolo26s-seg.mlpackage         ../WoundDetector/Resources/
-cp -R yolo26m-seg.mlpackage         ../WoundDetector/Resources/
+cp -R wound-yolo26n-seg.mlpackage   ../WoundTrack/Resources/
+cp -R wound-yolo26s-seg.mlpackage   ../WoundTrack/Resources/
+cp -R yolo26n-seg.mlpackage         ../WoundTrack/Resources/
+cp -R yolo26s-seg.mlpackage         ../WoundTrack/Resources/
+cp -R yolo26m-seg.mlpackage         ../WoundTrack/Resources/
 ```
 
 ### Build the iOS app
 
 ```bash
-cd WoundDetector
+cd WoundTrack
 xcodegen generate
 python3 scripts/fix-mlpackage-buildphase.py
-open WoundDetector.xcodeproj
+open WoundTrack.xcodeproj
 ```
 
 In Xcode, set your development team under **Signing & Capabilities**, then build and run on a connected iPhone.

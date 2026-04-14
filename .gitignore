@@ -31,5 +31,9 @@ __pycache__/
 .claude/
 
 # Stray `/export` chat dumps
-WoundDetector/2026-*-command-message*.txt
+WoundTrack/2026-*-command-message*.txt
+2026-*-this-session-is-being-continued-from-a-previous-c.txt
+
+# Local model-export outputs
+model-export/exports/
 .gstack/

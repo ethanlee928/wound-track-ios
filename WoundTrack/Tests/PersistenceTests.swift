@@ -1,6 +1,6 @@
 import SwiftData
 import XCTest
-@testable import WoundDetector
+@testable import WoundTrack
 
 final class PersistenceTests: XCTestCase {
 
