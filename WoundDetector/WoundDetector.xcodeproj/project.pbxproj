@@ -16,6 +16,7 @@
 		309C11A2863AA9FDDBFAAB87 /* ModelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1098B0D648F08640AD2723 /* ModelPickerView.swift */; };
 		34182963172C96229A16B142 /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D81717D4C1DB909300455 /* PatientDetailView.swift */; };
 		3E3A1762D20BD294B3F68D4D /* PatientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D8F1E172C19406311424B5 /* PatientListView.swift */; };
+		4FF14F1050C725D1E18611BA /* AssessmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171FD82135A471D7AAA84B08 /* AssessmentDetailView.swift */; };
 		556202B0D0E67D21BCE4B074 /* Assessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF9D65EA514656C7CC1ED49 /* Assessment.swift */; };
 		667E4A27088F14EBDF67D0EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3AF03074B1F48365827BDEE /* Assets.xcassets */; };
 		6783518E8A6893E1C9733AF7 /* CaptureInferenceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC34A539C33AC742B74D9B3 /* CaptureInferenceResult.swift */; };
@@ -63,6 +64,7 @@
 		0415B5E0CE81EDC875513140 /* StageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageClassifier.swift; sourceTree = "<group>"; };
 		08CEF4866E1B6728F87EDBBE /* PhotoLibraryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPicker.swift; sourceTree = "<group>"; };
 		0E51D17F482B0921C304388B /* WoundStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundStage.swift; sourceTree = "<group>"; };
+		171FD82135A471D7AAA84B08 /* AssessmentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentDetailView.swift; sourceTree = "<group>"; };
 		19FD903DE478D0ECA2DF7392 /* WoundInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundInfoPanel.swift; sourceTree = "<group>"; };
 		1E426A78FE4E3B30B45748C6 /* AreaCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCalculatorTests.swift; sourceTree = "<group>"; };
 		233FE2FBD92A206158E2E4DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		9D85F1B0040710AAD17B13D1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				171FD82135A471D7AAA84B08 /* AssessmentDetailView.swift */,
 				92E1558895E073937B680A32 /* BodySitePicker.swift */,
 				AA513F0256128DC7C1DA13BF /* CaptureFlowView.swift */,
 				641D81717D4C1DB909300455 /* PatientDetailView.swift */,
@@ -323,6 +326,7 @@
 				68812A0728F5F5E675EBBAEA /* ARCapturedFrame.swift in Sources */,
 				196FA8253F805614B510FFCF /* AreaCalculator.swift in Sources */,
 				556202B0D0E67D21BCE4B074 /* Assessment.swift in Sources */,
+				4FF14F1050C725D1E18611BA /* AssessmentDetailView.swift in Sources */,
 				C2FA934EFD0F9C7633FFD41E /* BodySite.swift in Sources */,
 				DFF33E3291BD7EADFC06723F /* BodySitePicker.swift in Sources */,
 				A9C8351368C8BFFC1491E443 /* BooleanMask+CGImage.swift in Sources */,

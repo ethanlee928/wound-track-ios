@@ -50,7 +50,9 @@ struct WoundDetailView: View {
                 } else {
                     let reversed = sortedAssessments.reversed().map { $0 }
                     ForEach(reversed) { assessment in
-                        AssessmentRow(assessment: assessment)
+                        NavigationLink(value: assessment) {
+                            AssessmentRow(assessment: assessment)
+                        }
                     }
                     .onDelete { offsets in
                         deleteAssessments(at: offsets, from: reversed)
@@ -69,6 +71,9 @@ struct WoundDetailView: View {
         }
         .fullScreenCover(isPresented: $showCapture) {
             CaptureFlowView(wound: wound) { showCapture = false }
+        }
+        .navigationDestination(for: Assessment.self) { assessment in
+            AssessmentDetailView(assessment: assessment)
         }
     }
 }

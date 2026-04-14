@@ -75,7 +75,12 @@ final class ARCaptureViewController: UIViewController, ARSessionDelegate {
     // MARK: - Setup
 
     private func setupPreview() {
-        previewLayer.contentsGravity = .resizeAspectFill
+        // `.resizeAspect` (letterbox) so the preview shows exactly what the
+        // sensor captures. Using `.resizeAspectFill` would crop the 4:3 sensor
+        // frame to the screen's ~9:19 aspect, making the preview feel
+        // zoomed-in relative to the post-capture review image.
+        previewLayer.contentsGravity = .resizeAspect
+        previewLayer.backgroundColor = UIColor.black.cgColor
         view.layer.insertSublayer(previewLayer, at: 0)
     }
 
