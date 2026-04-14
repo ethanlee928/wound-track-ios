@@ -22,11 +22,13 @@
 		68812A0728F5F5E675EBBAEA /* ARCapturedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AA3A857BBCC37FF070BD80 /* ARCapturedFrame.swift */; };
 		748F225FC85DC6D5A182145D /* DetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE95C359DC8B96DBF3759 /* DetectionViewModel.swift */; };
 		78D24EE0D60CBB0426D75D75 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87445CC5446D0E70EA461E3 /* ImagePicker.swift */; };
+		87F35FB55FB189490226ADC5 /* SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA12F1B2412059338FADC29 /* SeedData.swift */; };
 		9695842B84EBC8BB2ADA2BE7 /* WoundStageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01AF9014B4AD0B65F743CB /* WoundStageTests.swift */; };
 		A6F81BDF65FDA4C8972D4069 /* yolo26s-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 7007360E7D297B4D756B158A /* yolo26s-seg.mlpackage */; };
 		A780DD679FF740AD29C7D765 /* WoundDetectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED22B1300FA732A66AC309A4 /* WoundDetectorApp.swift */; };
 		A9C8351368C8BFFC1491E443 /* BooleanMask+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A5AB62397770EA7F15FE2D /* BooleanMask+CGImage.swift */; };
 		AD18BA40481D9459EF9530F5 /* WoundDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9E3C9CB6D33B431398C694 /* WoundDetailView.swift */; };
+		B8B4EF758846FF205FFF3FD7 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033EBB6B873A3388BD27121 /* PersistenceTests.swift */; };
 		BB92B9054C53D17FC8ED58F4 /* wound-stage-yolo26n-cls.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 488FB3606A25DFB768F7EE8B /* wound-stage-yolo26n-cls.mlpackage */; };
 		BC3150DFF22E08DB6912789C /* ARCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0E7E2AC921826EAD4672DF /* ARCaptureView.swift */; };
 		C2FA934EFD0F9C7633FFD41E /* BodySite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA78BF9AD3604EE5ABD661FA /* BodySite.swift */; };
@@ -35,6 +37,7 @@
 		CB08DFFA6621F15FB2CC8B21 /* CaptureFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA513F0256128DC7C1DA13BF /* CaptureFlowView.swift */; };
 		DC7584B391E39F4B1FB81694 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233FE2FBD92A206158E2E4DB /* ContentView.swift */; };
 		DD086787E7E0C5761DD3A589 /* wound-yolo26s-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = CA1CEEE1202EE3EBFA1D7546 /* wound-yolo26s-seg.mlpackage */; };
+		DFF33E3291BD7EADFC06723F /* BodySitePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1558895E073937B680A32 /* BodySitePicker.swift */; };
 		E2D01D23B88EC16FD8D68BAE /* yolo26n-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 41B24B4DC394224E087EF0CE /* yolo26n-seg.mlpackage */; };
 		E645AE6230E6C34FB956EC0B /* Wound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9715206BF5C398A13BE452E /* Wound.swift */; };
 		E962D55F9C87597DE07B09CB /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032E863EDBE0BDAA3F4BA216 /* ShareSheet.swift */; };
@@ -65,6 +68,7 @@
 		233FE2FBD92A206158E2E4DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2CAAE95C359DC8B96DBF3759 /* DetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionViewModel.swift; sourceTree = "<group>"; };
 		34793763DE67721C2BDE79EF /* AreaCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCalculator.swift; sourceTree = "<group>"; };
+		4033EBB6B873A3388BD27121 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		41B24B4DC394224E087EF0CE /* yolo26n-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26n-seg.mlpackage"; path = "Resources/yolo26n-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
 		488FB3606A25DFB768F7EE8B /* wound-stage-yolo26n-cls.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-stage-yolo26n-cls.mlpackage"; path = "Resources/wound-stage-yolo26n-cls.mlpackage"; sourceTree = SOURCE_ROOT; };
 		4BF9D65EA514656C7CC1ED49 /* Assessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assessment.swift; sourceTree = "<group>"; };
@@ -72,10 +76,12 @@
 		56284EB0E5CD22A1D278625F /* WoundDetector.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = WoundDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A01AF9014B4AD0B65F743CB /* WoundStageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundStageTests.swift; sourceTree = "<group>"; };
 		5AC34A539C33AC742B74D9B3 /* CaptureInferenceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureInferenceResult.swift; sourceTree = "<group>"; };
+		5EA12F1B2412059338FADC29 /* SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedData.swift; sourceTree = "<group>"; };
 		641D81717D4C1DB909300455 /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
 		6C3C258BAF18A6BDA9CBA97B /* ModelVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVariant.swift; sourceTree = "<group>"; };
 		7007360E7D297B4D756B158A /* yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26s-seg.mlpackage"; path = "Resources/yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
 		7F2C9D07572815411ECB55D6 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		92E1558895E073937B680A32 /* BodySitePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySitePicker.swift; sourceTree = "<group>"; };
 		A3AF03074B1F48365827BDEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA513F0256128DC7C1DA13BF /* CaptureFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureFlowView.swift; sourceTree = "<group>"; };
 		B87445CC5446D0E70EA461E3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 				EC1098B0D648F08640AD2723 /* ModelPickerView.swift */,
 				6C3C258BAF18A6BDA9CBA97B /* ModelVariant.swift */,
 				08CEF4866E1B6728F87EDBBE /* PhotoLibraryPicker.swift */,
+				5EA12F1B2412059338FADC29 /* SeedData.swift */,
 				032E863EDBE0BDAA3F4BA216 /* ShareSheet.swift */,
 				0415B5E0CE81EDC875513140 /* StageClassifier.swift */,
 				ED22B1300FA732A66AC309A4 /* WoundDetectorApp.swift */,
@@ -149,6 +156,7 @@
 		9D85F1B0040710AAD17B13D1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				92E1558895E073937B680A32 /* BodySitePicker.swift */,
 				AA513F0256128DC7C1DA13BF /* CaptureFlowView.swift */,
 				641D81717D4C1DB909300455 /* PatientDetailView.swift */,
 				D1D8F1E172C19406311424B5 /* PatientListView.swift */,
@@ -198,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				1E426A78FE4E3B30B45748C6 /* AreaCalculatorTests.swift */,
+				4033EBB6B873A3388BD27121 /* PersistenceTests.swift */,
 				5A01AF9014B4AD0B65F743CB /* WoundStageTests.swift */,
 			);
 			path = Tests;
@@ -301,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA79A061E939D0DD308A1434 /* AreaCalculatorTests.swift in Sources */,
+				B8B4EF758846FF205FFF3FD7 /* PersistenceTests.swift in Sources */,
 				9695842B84EBC8BB2ADA2BE7 /* WoundStageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +324,7 @@
 				196FA8253F805614B510FFCF /* AreaCalculator.swift in Sources */,
 				556202B0D0E67D21BCE4B074 /* Assessment.swift in Sources */,
 				C2FA934EFD0F9C7633FFD41E /* BodySite.swift in Sources */,
+				DFF33E3291BD7EADFC06723F /* BodySitePicker.swift in Sources */,
 				A9C8351368C8BFFC1491E443 /* BooleanMask+CGImage.swift in Sources */,
 				CB08DFFA6621F15FB2CC8B21 /* CaptureFlowView.swift in Sources */,
 				6783518E8A6893E1C9733AF7 /* CaptureInferenceResult.swift in Sources */,
@@ -326,6 +337,7 @@
 				34182963172C96229A16B142 /* PatientDetailView.swift in Sources */,
 				3E3A1762D20BD294B3F68D4D /* PatientListView.swift in Sources */,
 				2DD973A2951FD48933DAE4D9 /* PhotoLibraryPicker.swift in Sources */,
+				87F35FB55FB189490226ADC5 /* SeedData.swift in Sources */,
 				E962D55F9C87597DE07B09CB /* ShareSheet.swift in Sources */,
 				24E6B53C5E2C04B84F80732F /* StageClassifier.swift in Sources */,
 				E645AE6230E6C34FB956EC0B /* Wound.swift in Sources */,

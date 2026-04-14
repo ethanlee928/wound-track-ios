@@ -14,6 +14,7 @@ struct WoundDetectorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task { await SeedData.seedIfNeeded(container: container) }
         }
         .modelContainer(container)
     }

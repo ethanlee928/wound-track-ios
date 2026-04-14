@@ -74,15 +74,15 @@ private struct AddWoundSheet: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section("Body Site") {
-                    Picker("Site", selection: $selectedSite) {
-                        ForEach(BodySite.allCases) { site in
-                            Text(site.displayName).tag(site)
-                        }
-                    }
-                    .pickerStyle(.wheel)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Tap the wound location on the body diagram.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal)
+                    BodySitePicker(selection: $selectedSite)
                 }
+                .padding(.vertical)
             }
             .navigationTitle("New Wound")
             .navigationBarTitleDisplayMode(.inline)
