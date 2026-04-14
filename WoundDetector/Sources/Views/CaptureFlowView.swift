@@ -186,37 +186,40 @@ private struct ReviewView: View {
 
     private func save() {
         isSaving = true
-        let container = modelContext.container
-        let woundID = wound.persistentModelID
-        let captured = data.capturedImage
-        let annotated = data.annotatedImage
-        let area = data.areaCm2
-        let stageName = data.stageName
-        let stageConf = data.stageConfidence
-        let notesPayload: NotesPayload = .init(
+        // File I/O and DB write are both cheap enough that doing them on the
+        // main actor (blocking UI for ~tens of ms) is fine and keeps us on
+        // the *same* ModelContext that the parent WoundDetailView observes.
+        // Going through WoundStore's @ModelActor here caused a cross-context
+        // merge lag that hid the new Assessment from @Bindable wound.
+        guard let paths = writeImageFiles(
+            captured: data.capturedImage,
+            annotated: data.annotatedImage
+        ) else {
+            isSaving = false
+            return
+        }
+        let notesPayload = NotesPayload(
             notes: notes,
             pain: pain,
             exudate: exudate.rawValue,
             dressing: dressing
         )
-
-        Task {
-            guard let paths = writeImageFiles(captured: captured, annotated: annotated) else {
-                await MainActor.run { isSaving = false }
-                return
-            }
-            let jsonString = notesPayload.jsonString
-            let store = WoundStore(modelContainer: container)
-            _ = try? await store.createAssessment(
-                woundID: woundID,
-                imageRelativePath: paths.imageRel,
-                maskRelativePath: paths.maskRel,
-                areaCm2: area,
-                stageName: stageName,
-                stageConfidence: stageConf,
-                notesJSON: jsonString
-            )
-            await MainActor.run { onSaved() }
+        let assessment = Assessment(
+            imageRelativePath: paths.imageRel,
+            maskRelativePath: paths.maskRel,
+            areaCm2: data.areaCm2,
+            stageName: data.stageName,
+            stageConfidence: data.stageConfidence,
+            notesJSON: notesPayload.jsonString,
+            wound: wound
+        )
+        modelContext.insert(assessment)
+        do {
+            try modelContext.save()
+            onSaved()
+        } catch {
+            print("Save failed: \(error)")
+            isSaving = false
         }
     }
 
