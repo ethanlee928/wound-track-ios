@@ -16,6 +16,7 @@
 		309C11A2863AA9FDDBFAAB87 /* ModelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1098B0D648F08640AD2723 /* ModelPickerView.swift */; };
 		556202B0D0E67D21BCE4B074 /* Assessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF9D65EA514656C7CC1ED49 /* Assessment.swift */; };
 		667E4A27088F14EBDF67D0EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3AF03074B1F48365827BDEE /* Assets.xcassets */; };
+		68812A0728F5F5E675EBBAEA /* ARCapturedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AA3A857BBCC37FF070BD80 /* ARCapturedFrame.swift */; };
 		748F225FC85DC6D5A182145D /* DetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE95C359DC8B96DBF3759 /* DetectionViewModel.swift */; };
 		78D24EE0D60CBB0426D75D75 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87445CC5446D0E70EA461E3 /* ImagePicker.swift */; };
 		9695842B84EBC8BB2ADA2BE7 /* WoundStageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01AF9014B4AD0B65F743CB /* WoundStageTests.swift */; };
@@ -23,6 +24,7 @@
 		A780DD679FF740AD29C7D765 /* WoundDetectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED22B1300FA732A66AC309A4 /* WoundDetectorApp.swift */; };
 		A9C8351368C8BFFC1491E443 /* BooleanMask+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A5AB62397770EA7F15FE2D /* BooleanMask+CGImage.swift */; };
 		BB92B9054C53D17FC8ED58F4 /* wound-stage-yolo26n-cls.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 488FB3606A25DFB768F7EE8B /* wound-stage-yolo26n-cls.mlpackage */; };
+		BC3150DFF22E08DB6912789C /* ARCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0E7E2AC921826EAD4672DF /* ARCaptureView.swift */; };
 		C2FA934EFD0F9C7633FFD41E /* BodySite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA78BF9AD3604EE5ABD661FA /* BodySite.swift */; };
 		C7E493EAE8BF677CE3BE17E1 /* yolo26m-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = C63C6BDE2320DCB78421EDF6 /* yolo26m-seg.mlpackage */; };
 		CA79A061E939D0DD308A1434 /* AreaCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E426A78FE4E3B30B45748C6 /* AreaCalculatorTests.swift */; };
@@ -72,7 +74,9 @@
 		C41C25534970C167B2D32A79 /* WoundDetectorTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WoundDetectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63C6BDE2320DCB78421EDF6 /* yolo26m-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26m-seg.mlpackage"; path = "Resources/yolo26m-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
 		CA1CEEE1202EE3EBFA1D7546 /* wound-yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-yolo26s-seg.mlpackage"; path = "Resources/wound-yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		DC0E7E2AC921826EAD4672DF /* ARCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCaptureView.swift; sourceTree = "<group>"; };
 		DFF82BC484A520482D79C11D /* wound-yolo26n-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-yolo26n-seg.mlpackage"; path = "Resources/wound-yolo26n-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		E2AA3A857BBCC37FF070BD80 /* ARCapturedFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCapturedFrame.swift; sourceTree = "<group>"; };
 		EC1098B0D648F08640AD2723 /* ModelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPickerView.swift; sourceTree = "<group>"; };
 		ED22B1300FA732A66AC309A4 /* WoundDetectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundDetectorApp.swift; sourceTree = "<group>"; };
 		F9715206BF5C398A13BE452E /* Wound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wound.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 		FA1492199D0EE3BE84B74BB5 /* Capture */ = {
 			isa = PBXGroup;
 			children = (
+				E2AA3A857BBCC37FF070BD80 /* ARCapturedFrame.swift */,
+				DC0E7E2AC921826EAD4672DF /* ARCaptureView.swift */,
 				34793763DE67721C2BDE79EF /* AreaCalculator.swift */,
 				52A5AB62397770EA7F15FE2D /* BooleanMask+CGImage.swift */,
 			);
@@ -280,6 +286,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC3150DFF22E08DB6912789C /* ARCaptureView.swift in Sources */,
+				68812A0728F5F5E675EBBAEA /* ARCapturedFrame.swift in Sources */,
 				196FA8253F805614B510FFCF /* AreaCalculator.swift in Sources */,
 				556202B0D0E67D21BCE4B074 /* Assessment.swift in Sources */,
 				C2FA934EFD0F9C7633FFD41E /* BodySite.swift in Sources */,
