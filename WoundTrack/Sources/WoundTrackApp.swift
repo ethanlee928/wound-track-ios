@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct WoundDetectorApp: App {
+struct WoundTrackApp: App {
     let container: ModelContainer = {
         do {
             return try ModelContainer(for: Patient.self, Wound.self, Assessment.self)

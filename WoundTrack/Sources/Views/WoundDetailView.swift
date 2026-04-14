@@ -8,12 +8,19 @@ struct WoundDetailView: View {
     @State private var showCapture = false
 
     private func deleteAssessments(at offsets: IndexSet, from sorted: [Assessment]) {
-        let container = modelContext.container
-        let ids = offsets.map { sorted[$0].persistentModelID }
-        Task {
-            let store = WoundStore(modelContainer: container)
-            for id in ids { try? await store.deleteAssessment(id) }
+        // Delete on the main ModelContext so @Bindable wound.assessments sees
+        // the change immediately. Going through WoundStore's actor leaves a
+        // stale reference in the main context's copy of the relationship, and
+        // SwiftUI's ForEach then hits an invalidated SwiftData instance.
+        let targets = offsets.map { sorted[$0] }
+        let files = targets.flatMap {
+            [$0.imageRelativePath, $0.maskRelativePath].compactMap { $0 }
         }
+        for assessment in targets {
+            modelContext.delete(assessment)
+        }
+        try? modelContext.save()
+        FileCleanup.removeRelative(paths: files)
     }
 
     private var sortedAssessments: [Assessment] {

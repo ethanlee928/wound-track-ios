@@ -7,12 +7,19 @@ struct PatientDetailView: View {
     @State private var showAddWound = false
 
     private func deleteWounds(at offsets: IndexSet, from sorted: [Wound]) {
-        let container = modelContext.container
-        let ids = offsets.map { sorted[$0].persistentModelID }
-        Task {
-            let store = WoundStore(modelContainer: container)
-            for id in ids { try? await store.deleteWound(id) }
+        // Main-context delete keeps @Bindable patient.wounds in sync; see
+        // WoundDetailView.deleteAssessments for the rationale.
+        let targets = offsets.map { sorted[$0] }
+        let files = targets.flatMap { wound in
+            wound.assessments.flatMap {
+                [$0.imageRelativePath, $0.maskRelativePath].compactMap { $0 }
+            }
         }
+        for wound in targets {
+            modelContext.delete(wound)
+        }
+        try? modelContext.save()
+        FileCleanup.removeRelative(paths: files)
     }
 
     var body: some View {

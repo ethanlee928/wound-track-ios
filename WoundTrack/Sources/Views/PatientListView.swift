@@ -43,14 +43,21 @@ struct PatientListView: View {
     }
 
     private func deletePatients(at offsets: IndexSet) {
-        let container = modelContext.container
-        let ids = offsets.map { patients[$0].persistentModelID }
-        Task {
-            let store = WoundStore(modelContainer: container)
-            for id in ids {
-                try? await store.deletePatient(id)
+        // Main-context delete — consistent with wound/assessment deletes and
+        // avoids any cross-context staleness on cached relationship arrays.
+        let targets = offsets.map { patients[$0] }
+        let files = targets.flatMap { patient in
+            patient.wounds.flatMap { wound in
+                wound.assessments.flatMap {
+                    [$0.imageRelativePath, $0.maskRelativePath].compactMap { $0 }
+                }
             }
         }
+        for patient in targets {
+            modelContext.delete(patient)
+        }
+        try? modelContext.save()
+        FileCleanup.removeRelative(paths: files)
     }
 }
 
