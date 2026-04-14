@@ -141,6 +141,7 @@ private struct ReviewView: View {
     @State private var exudate: Exudate = .none
     @State private var dressing: String = ""
     @State private var isSaving = false
+    @State private var saveError: String?
 
     enum Exudate: String, CaseIterable, Identifiable {
         case none, scant, moderate, heavy
@@ -181,6 +182,11 @@ private struct ReviewView: View {
                         .disabled(isSaving)
                 }
             }
+            .alert("Save failed", isPresented: .constant(saveError != nil)) {
+                Button("OK") { saveError = nil }
+            } message: {
+                Text(saveError ?? "")
+            }
         }
     }
 
@@ -191,10 +197,16 @@ private struct ReviewView: View {
         // the *same* ModelContext that the parent WoundDetailView observes.
         // Going through WoundStore's @ModelActor here caused a cross-context
         // merge lag that hid the new Assessment from @Bindable wound.
+        //
+        // Save the upright (rotated) versions so thumbnails in the timeline
+        // read correctly. We don't need the landscape-native frame after
+        // AreaCalculator has already produced cm² — the image on disk is for
+        // display only.
         guard let paths = writeImageFiles(
-            captured: data.capturedImage,
-            annotated: data.annotatedImage
+            captured: data.capturedImage.rotated90(),
+            annotated: data.annotatedImage.rotated90()
         ) else {
+            saveError = "Couldn't write the captured image to storage. Please try again."
             isSaving = false
             return
         }
@@ -219,6 +231,7 @@ private struct ReviewView: View {
             onSaved()
         } catch {
             print("Save failed: \(error)")
+            saveError = "Saving the assessment failed: \(error.localizedDescription)"
             isSaving = false
         }
     }

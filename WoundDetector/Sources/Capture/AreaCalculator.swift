@@ -75,17 +75,22 @@ enum AreaCalculator {
         let depthStride = CVPixelBufferGetBytesPerRow(depthMap) / MemoryLayout<Float>.size
         let depthPtr = depthBase.assumingMemoryBound(to: Float.self)
 
-        let confPtr: UnsafePointer<UInt8>?
-        let confStride: Int
+        // Lock the confidence map at function scope so `confPtr` stays valid
+        // through the main pixel loop below. A prior version deferred the
+        // unlock inside `if let`, which fired too early and made confPtr a
+        // dangling pointer by the time the loop ran.
+        var confPtr: UnsafePointer<UInt8>?
+        var confStride: Int = 0
         if let conf = confidenceMap {
             CVPixelBufferLockBaseAddress(conf, .readOnly)
-            defer { CVPixelBufferUnlockBaseAddress(conf, .readOnly) }
             confPtr = CVPixelBufferGetBaseAddress(conf)
                 .map { UnsafePointer<UInt8>($0.assumingMemoryBound(to: UInt8.self)) }
             confStride = CVPixelBufferGetBytesPerRow(conf)
-        } else {
-            confPtr = nil
-            confStride = 0
+        }
+        defer {
+            if let conf = confidenceMap {
+                CVPixelBufferUnlockBaseAddress(conf, .readOnly)
+            }
         }
 
         let invFx = 1.0 / fx
