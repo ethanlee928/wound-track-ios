@@ -66,10 +66,34 @@ actor WoundStore {
             .flatMap { [$0.imageRelativePath, $0.maskRelativePath].compactMap { $0 } }
         modelContext.delete(patient)
         try modelContext.save()
-        let docs = try FileManager.default.url(
+        removeFiles(relativePaths: filesToRemove)
+    }
+
+    /// Deletes a wound and cascades to its assessments (+ their image files).
+    func deleteWound(_ id: PersistentIdentifier) throws {
+        guard let wound = self[id, as: Wound.self] else { return }
+        let filesToRemove = wound.assessments
+            .flatMap { [$0.imageRelativePath, $0.maskRelativePath].compactMap { $0 } }
+        modelContext.delete(wound)
+        try modelContext.save()
+        removeFiles(relativePaths: filesToRemove)
+    }
+
+    /// Deletes a single assessment (+ its image files).
+    func deleteAssessment(_ id: PersistentIdentifier) throws {
+        guard let assessment = self[id, as: Assessment.self] else { return }
+        let filesToRemove = [assessment.imageRelativePath, assessment.maskRelativePath]
+            .compactMap { $0 }
+        modelContext.delete(assessment)
+        try modelContext.save()
+        removeFiles(relativePaths: filesToRemove)
+    }
+
+    private func removeFiles(relativePaths: [String]) {
+        guard let docs = try? FileManager.default.url(
             for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false
-        )
-        for rel in filesToRemove {
+        ) else { return }
+        for rel in relativePaths {
             try? FileManager.default.removeItem(at: docs.appendingPathComponent(rel))
         }
     }

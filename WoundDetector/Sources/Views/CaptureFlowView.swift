@@ -90,7 +90,12 @@ struct CaptureFlowView: View {
         inference: CaptureInferenceResult
     ) -> AreaCalculator.Result? {
         guard let maskCG = inference.combinedMask else { return nil }
-        guard var mask = BooleanMask.from(cgImage: maskCG) else { return nil }
+        // YOLO's combinedMask is at model input size (~640×640). Rasterize into
+        // capture resolution so the mask's pixel coordinates match the bbox
+        // and the depth-sampling math in AreaCalculator.
+        guard var mask = BooleanMask.from(cgImage: maskCG, targetSize: frame.imageSize) else {
+            return nil
+        }
         // Intersect to the primary detection's bbox so we don't accumulate
         // neighbouring instances' pixels.
         mask = mask.intersected(with: inference.firstBox)

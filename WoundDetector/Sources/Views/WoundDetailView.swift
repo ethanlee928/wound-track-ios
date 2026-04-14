@@ -4,7 +4,17 @@ import SwiftUI
 
 struct WoundDetailView: View {
     @Bindable var wound: Wound
+    @Environment(\.modelContext) private var modelContext
     @State private var showCapture = false
+
+    private func deleteAssessments(at offsets: IndexSet, from sorted: [Assessment]) {
+        let container = modelContext.container
+        let ids = offsets.map { sorted[$0].persistentModelID }
+        Task {
+            let store = WoundStore(modelContainer: container)
+            for id in ids { try? await store.deleteAssessment(id) }
+        }
+    }
 
     private var sortedAssessments: [Assessment] {
         wound.assessments.sorted { $0.date < $1.date }
@@ -38,8 +48,12 @@ struct WoundDetailView: View {
                     Text("No assessments yet. Tap the camera to capture one.")
                         .foregroundStyle(.secondary)
                 } else {
-                    ForEach(sortedAssessments.reversed()) { assessment in
+                    let reversed = sortedAssessments.reversed().map { $0 }
+                    ForEach(reversed) { assessment in
                         AssessmentRow(assessment: assessment)
+                    }
+                    .onDelete { offsets in
+                        deleteAssessments(at: offsets, from: reversed)
                     }
                 }
             }

@@ -6,6 +6,15 @@ struct PatientDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var showAddWound = false
 
+    private func deleteWounds(at offsets: IndexSet, from sorted: [Wound]) {
+        let container = modelContext.container
+        let ids = offsets.map { sorted[$0].persistentModelID }
+        Task {
+            let store = WoundStore(modelContainer: container)
+            for id in ids { try? await store.deleteWound(id) }
+        }
+    }
+
     var body: some View {
         List {
             Section("Patient Info") {
@@ -21,10 +30,14 @@ struct PatientDetailView: View {
                     Text("No wounds yet. Tap + to add one.")
                         .foregroundStyle(.secondary)
                 } else {
-                    ForEach(patient.wounds.sorted(by: { $0.firstSeen > $1.firstSeen })) { wound in
+                    let sortedWounds = patient.wounds.sorted(by: { $0.firstSeen > $1.firstSeen })
+                    ForEach(sortedWounds) { wound in
                         NavigationLink(value: wound) {
                             WoundRow(wound: wound)
                         }
+                    }
+                    .onDelete { offsets in
+                        deleteWounds(at: offsets, from: sortedWounds)
                     }
                 }
             }
