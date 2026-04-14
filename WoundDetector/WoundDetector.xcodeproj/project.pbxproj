@@ -14,8 +14,11 @@
 		24E6B53C5E2C04B84F80732F /* StageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415B5E0CE81EDC875513140 /* StageClassifier.swift */; };
 		2DD973A2951FD48933DAE4D9 /* PhotoLibraryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CEF4866E1B6728F87EDBBE /* PhotoLibraryPicker.swift */; };
 		309C11A2863AA9FDDBFAAB87 /* ModelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1098B0D648F08640AD2723 /* ModelPickerView.swift */; };
+		34182963172C96229A16B142 /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D81717D4C1DB909300455 /* PatientDetailView.swift */; };
+		3E3A1762D20BD294B3F68D4D /* PatientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D8F1E172C19406311424B5 /* PatientListView.swift */; };
 		556202B0D0E67D21BCE4B074 /* Assessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF9D65EA514656C7CC1ED49 /* Assessment.swift */; };
 		667E4A27088F14EBDF67D0EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3AF03074B1F48365827BDEE /* Assets.xcassets */; };
+		6783518E8A6893E1C9733AF7 /* CaptureInferenceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC34A539C33AC742B74D9B3 /* CaptureInferenceResult.swift */; };
 		68812A0728F5F5E675EBBAEA /* ARCapturedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AA3A857BBCC37FF070BD80 /* ARCapturedFrame.swift */; };
 		748F225FC85DC6D5A182145D /* DetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAE95C359DC8B96DBF3759 /* DetectionViewModel.swift */; };
 		78D24EE0D60CBB0426D75D75 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87445CC5446D0E70EA461E3 /* ImagePicker.swift */; };
@@ -23,11 +26,13 @@
 		A6F81BDF65FDA4C8972D4069 /* yolo26s-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 7007360E7D297B4D756B158A /* yolo26s-seg.mlpackage */; };
 		A780DD679FF740AD29C7D765 /* WoundDetectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED22B1300FA732A66AC309A4 /* WoundDetectorApp.swift */; };
 		A9C8351368C8BFFC1491E443 /* BooleanMask+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A5AB62397770EA7F15FE2D /* BooleanMask+CGImage.swift */; };
+		AD18BA40481D9459EF9530F5 /* WoundDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9E3C9CB6D33B431398C694 /* WoundDetailView.swift */; };
 		BB92B9054C53D17FC8ED58F4 /* wound-stage-yolo26n-cls.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 488FB3606A25DFB768F7EE8B /* wound-stage-yolo26n-cls.mlpackage */; };
 		BC3150DFF22E08DB6912789C /* ARCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0E7E2AC921826EAD4672DF /* ARCaptureView.swift */; };
 		C2FA934EFD0F9C7633FFD41E /* BodySite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA78BF9AD3604EE5ABD661FA /* BodySite.swift */; };
 		C7E493EAE8BF677CE3BE17E1 /* yolo26m-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = C63C6BDE2320DCB78421EDF6 /* yolo26m-seg.mlpackage */; };
 		CA79A061E939D0DD308A1434 /* AreaCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E426A78FE4E3B30B45748C6 /* AreaCalculatorTests.swift */; };
+		CB08DFFA6621F15FB2CC8B21 /* CaptureFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA513F0256128DC7C1DA13BF /* CaptureFlowView.swift */; };
 		DC7584B391E39F4B1FB81694 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233FE2FBD92A206158E2E4DB /* ContentView.swift */; };
 		DD086787E7E0C5761DD3A589 /* wound-yolo26s-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = CA1CEEE1202EE3EBFA1D7546 /* wound-yolo26s-seg.mlpackage */; };
 		E2D01D23B88EC16FD8D68BAE /* yolo26n-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 41B24B4DC394224E087EF0CE /* yolo26n-seg.mlpackage */; };
@@ -66,14 +71,19 @@
 		52A5AB62397770EA7F15FE2D /* BooleanMask+CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BooleanMask+CGImage.swift"; sourceTree = "<group>"; };
 		56284EB0E5CD22A1D278625F /* WoundDetector.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = WoundDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A01AF9014B4AD0B65F743CB /* WoundStageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundStageTests.swift; sourceTree = "<group>"; };
+		5AC34A539C33AC742B74D9B3 /* CaptureInferenceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureInferenceResult.swift; sourceTree = "<group>"; };
+		641D81717D4C1DB909300455 /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
 		6C3C258BAF18A6BDA9CBA97B /* ModelVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVariant.swift; sourceTree = "<group>"; };
 		7007360E7D297B4D756B158A /* yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26s-seg.mlpackage"; path = "Resources/yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
 		7F2C9D07572815411ECB55D6 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		A3AF03074B1F48365827BDEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA513F0256128DC7C1DA13BF /* CaptureFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureFlowView.swift; sourceTree = "<group>"; };
 		B87445CC5446D0E70EA461E3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C41C25534970C167B2D32A79 /* WoundDetectorTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WoundDetectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63C6BDE2320DCB78421EDF6 /* yolo26m-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26m-seg.mlpackage"; path = "Resources/yolo26m-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
 		CA1CEEE1202EE3EBFA1D7546 /* wound-yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-yolo26s-seg.mlpackage"; path = "Resources/wound-yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		CA9E3C9CB6D33B431398C694 /* WoundDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundDetailView.swift; sourceTree = "<group>"; };
+		D1D8F1E172C19406311424B5 /* PatientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListView.swift; sourceTree = "<group>"; };
 		DC0E7E2AC921826EAD4672DF /* ARCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCaptureView.swift; sourceTree = "<group>"; };
 		DFF82BC484A520482D79C11D /* wound-yolo26n-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-yolo26n-seg.mlpackage"; path = "Resources/wound-yolo26n-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
 		E2AA3A857BBCC37FF070BD80 /* ARCapturedFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCapturedFrame.swift; sourceTree = "<group>"; };
@@ -131,8 +141,20 @@
 				0E51D17F482B0921C304388B /* WoundStage.swift */,
 				FA1492199D0EE3BE84B74BB5 /* Capture */,
 				1E747DB91F05683A66988507 /* Models */,
+				9D85F1B0040710AAD17B13D1 /* Views */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		9D85F1B0040710AAD17B13D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA513F0256128DC7C1DA13BF /* CaptureFlowView.swift */,
+				641D81717D4C1DB909300455 /* PatientDetailView.swift */,
+				D1D8F1E172C19406311424B5 /* PatientListView.swift */,
+				CA9E3C9CB6D33B431398C694 /* WoundDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D99AC2977C9906EEAD153016 = {
@@ -167,6 +189,7 @@
 				DC0E7E2AC921826EAD4672DF /* ARCaptureView.swift */,
 				34793763DE67721C2BDE79EF /* AreaCalculator.swift */,
 				52A5AB62397770EA7F15FE2D /* BooleanMask+CGImage.swift */,
+				5AC34A539C33AC742B74D9B3 /* CaptureInferenceResult.swift */,
 			);
 			path = Capture;
 			sourceTree = "<group>";
@@ -292,16 +315,21 @@
 				556202B0D0E67D21BCE4B074 /* Assessment.swift in Sources */,
 				C2FA934EFD0F9C7633FFD41E /* BodySite.swift in Sources */,
 				A9C8351368C8BFFC1491E443 /* BooleanMask+CGImage.swift in Sources */,
+				CB08DFFA6621F15FB2CC8B21 /* CaptureFlowView.swift in Sources */,
+				6783518E8A6893E1C9733AF7 /* CaptureInferenceResult.swift in Sources */,
 				DC7584B391E39F4B1FB81694 /* ContentView.swift in Sources */,
 				748F225FC85DC6D5A182145D /* DetectionViewModel.swift in Sources */,
 				78D24EE0D60CBB0426D75D75 /* ImagePicker.swift in Sources */,
 				309C11A2863AA9FDDBFAAB87 /* ModelPickerView.swift in Sources */,
 				230F58334A5142FB22E2A9BD /* ModelVariant.swift in Sources */,
 				0B4A694DEB81B07A5DF45113 /* Patient.swift in Sources */,
+				34182963172C96229A16B142 /* PatientDetailView.swift in Sources */,
+				3E3A1762D20BD294B3F68D4D /* PatientListView.swift in Sources */,
 				2DD973A2951FD48933DAE4D9 /* PhotoLibraryPicker.swift in Sources */,
 				E962D55F9C87597DE07B09CB /* ShareSheet.swift in Sources */,
 				24E6B53C5E2C04B84F80732F /* StageClassifier.swift in Sources */,
 				E645AE6230E6C34FB956EC0B /* Wound.swift in Sources */,
+				AD18BA40481D9459EF9530F5 /* WoundDetailView.swift in Sources */,
 				A780DD679FF740AD29C7D765 /* WoundDetectorApp.swift in Sources */,
 				FE038D43DD435D2C7024419A /* WoundInfoPanel.swift in Sources */,
 				EB29FB63CF9782A41A2D3AB6 /* WoundStage.swift in Sources */,
