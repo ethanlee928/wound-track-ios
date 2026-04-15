@@ -37,3 +37,14 @@ WoundTrack/2026-*-command-message*.txt
 # Local model-export outputs
 model-export/exports/
 .gstack/
+
+# Training repo (wound-segmentation-yolo) — code only, no data/weights/logs
+wound-segmentation-yolo/.venv/
+wound-segmentation-yolo/runs/
+wound-segmentation-yolo/dataset/
+wound-segmentation-yolo/pressure-ulcer-cls/
+wound-segmentation-yolo/pressure-ulcer-cls-clean/
+wound-segmentation-yolo/pressure-ulcer-staging/
+wound-segmentation-yolo/logs/
+wound-segmentation-yolo/.env
+wound-segmentation-yolo/*.npy
