@@ -384,17 +384,13 @@ private struct NotesPayload: Codable {
 
 private extension UIImage {
     /// Rotate a CGImage-backed UIImage 90° clockwise so the landscape-native
-    /// capture reads upright in portrait UI.
+    /// capture reads upright in portrait UI. Uses an orientation-tagged
+    /// UIImage (same EXIF semantics as `CIImage.oriented(.right)` used in the
+    /// preview path) so we don't have to get CTM flip math right by hand.
+    /// jpegData()/pngData() normalize the orientation into the written pixels,
+    /// so the saved file is physically upright.
     func rotated90() -> UIImage {
         guard let cg = cgImage else { return self }
-        let newSize = CGSize(width: size.height, height: size.width)
-        UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
-        defer { UIGraphicsEndImageContext() }
-        guard let ctx = UIGraphicsGetCurrentContext() else { return self }
-        ctx.translateBy(x: newSize.width / 2, y: newSize.height / 2)
-        ctx.rotate(by: .pi / 2)
-        ctx.translateBy(x: -size.width / 2, y: -size.height / 2)
-        ctx.draw(cg, in: CGRect(origin: .zero, size: size))
-        return UIGraphicsGetImageFromCurrentImageContext() ?? self
+        return UIImage(cgImage: cg, scale: scale, orientation: .right)
     }
 }
