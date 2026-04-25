@@ -6,6 +6,10 @@ WoundTrack lets a clinician record a wound over time on a single iPhone Pro: sca
 
 The app started as a stateless single-shot wound detector and pivoted mid-project once the question reframed from *"what is this?"* to *"is it getting better?"*
 
+<p align="center">
+  <img src="docs/demo.gif" alt="WoundTrack demo: capture flow, area measurement, and longitudinal timeline" width="320">
+</p>
+
 ---
 
 ## Features
