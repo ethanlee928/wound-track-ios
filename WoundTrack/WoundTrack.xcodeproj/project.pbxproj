@@ -377,7 +377,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eleg5600.WoundTrack;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ethanlee928.WoundTrack;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -449,7 +449,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eleg5600.WoundTrackTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ethanlee928.WoundTrackTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WoundTrack.app/WoundTrack";
@@ -466,7 +466,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eleg5600.WoundTrackTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ethanlee928.WoundTrackTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WoundTrack.app/WoundTrack";
@@ -484,7 +484,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eleg5600.WoundTrack;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ethanlee928.WoundTrack;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

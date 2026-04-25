@@ -1,6 +1,6 @@
 name: WoundTrack
 options:
-  bundleIdPrefix: com.eleg5600
+  bundleIdPrefix: com.ethanlee928
   deploymentTarget:
     iOS: "17.0"
 
