@@ -121,26 +121,40 @@ wound-segmentation-yolo/
 
 ### Recover the model artifacts
 
-The `.pt` and `.mlpackage` files are intentionally not in git. Recover them before building:
+The `.pt` and `.mlpackage` files are intentionally not in git. The fastest path is to grab the prebuilt CoreML bundles from the [v1.0.0 release](https://github.com/ethanlee928/wound-track-ios/releases/tag/v1.0.0):
 
 ```bash
+curl -L -o /tmp/wt-models.zip \
+  https://github.com/ethanlee928/wound-track-ios/releases/download/v1.0.0/wound-track-models-v1.0.0.zip
+unzip /tmp/wt-models.zip -d WoundTrack/Resources/
+```
+
+This drops in all 7 `.mlpackage` directories the app expects — 3 COCO baselines, 2 FUSeg-fine-tuned wound-segmentation models, and 2 PI-staging classifiers. Filenames must match `WoundTrack/Sources/Inference/ModelVariant.swift` exactly, so don't rename anything inside the zip.
+
+#### Re-export from source checkpoints (optional)
+
+If you want to re-export at a different `imgsz` or audit the weights, the same release ships the fine-tuned `.pt` source checkpoints:
+
+```bash
+curl -L -o /tmp/wt-checkpoints.zip \
+  https://github.com/ethanlee928/wound-track-ios/releases/download/v1.0.0/wound-track-checkpoints-v1.0.0.zip
+unzip /tmp/wt-checkpoints.zip -d model-export/
+
 cd model-export
 uv sync
 
-# COCO baseline models — auto-downloads .pt and exports to CoreML
+# COCO baselines — Ultralytics auto-downloads the .pt on first run
 uv run yolo export model=yolo26n-seg.pt format=coreml imgsz=640
 uv run yolo export model=yolo26s-seg.pt format=coreml imgsz=640
 uv run yolo export model=yolo26m-seg.pt format=coreml imgsz=640
 
-# Wound-fine-tuned models — copy trained .pt back from training server first,
-# then export at the native FUSeg resolution (imgsz=512).
+# Wound-fine-tuned models — exported at the native FUSeg resolution
 uv run yolo export model=wound-yolo26n-seg.pt format=coreml imgsz=512 nms=False
 uv run yolo export model=wound-yolo26s-seg.pt format=coreml imgsz=512 nms=False
 
 # Stage classifier (SGIE) — exported at YOLO26-cls native size
 uv run yolo export model=wound-stage-yolo26n-cls.pt format=coreml imgsz=224
 
-# Move the exports into the iOS app's resources
 cp -R *.mlpackage ../WoundTrack/Resources/
 ```
 
