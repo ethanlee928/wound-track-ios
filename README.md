@@ -1,6 +1,6 @@
 # WoundTrack
 
-On-device **longitudinal wound tracking** for iOS, powered by **YOLO26-seg** (CoreML) for segmentation, **YOLO26-cls** for stage classification, and **ARKit + LiDAR** for real-world cm² area measurement. Final project for **ELEG5600 (CUHK)**.
+On-device **longitudinal wound tracking** for iOS, powered by **YOLO26-seg** (CoreML) for segmentation, **YOLO26-cls** for stage classification, and **ARKit + LiDAR** for real-world cm² area measurement.
 
 WoundTrack lets a clinician record a wound over time on a single iPhone Pro: scan with the camera, get a segmented mask + stage label + measured area in cm², and watch the healing trajectory across visits — entirely on-device, no PHI leaving the phone.
 
