@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04003A8448DE547DC5B2F55D /* WoundStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78986391EE60E819D96105E /* WoundStage.swift */; };
+		049258625FB75D4BF6E52A5F /* Wound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077EC6BA8576EA20494CF683 /* Wound.swift */; };
+		0E10386868855EC98395CB35 /* ModelVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E9200FD4024F593A155DE8 /* ModelVariant.swift */; };
+		16CB89E367331982E0358DF2 /* WoundDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF026867398ACD85BF7D428 /* WoundDetailView.swift */; };
+		1882BDF732FC7B1B40B2E7AC /* BooleanMask+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990D8E7413F49AFBD6B1518 /* BooleanMask+CGImage.swift */; };
+		20B23700D254DCBF115EB1F3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01B0F91E99770A9E0789D4 /* ImagePicker.swift */; };
+		21AC6179673CB4F9DDFB5948 /* ModelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679252B45AEBF00BB7F54D33 /* ModelPickerView.swift */; };
+		22A47574CC0C8686B87521C2 /* ARCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9805FACBBD6A64164B02564 /* ARCaptureView.swift */; };
+		22C71498F532D893EB871912 /* WoundStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFF1C94BC312935DA5006 /* WoundStore.swift */; };
+		249BC99415B42156DAD3F783 /* WoundInfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BA23E935B53A5BD8D384AC /* WoundInfoPanel.swift */; };
+		264739A710D1342BBCA8DADF /* YOLO in Frameworks */ = {isa = PBXBuildFile; productRef = 63744F3428EE5491F78F285A /* YOLO */; };
+		2BA63C61F0DFD84511730419 /* CaptureFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F726DAA99BBD6DCAACD2F /* CaptureFlowView.swift */; };
+		2C8772996600D100A021EAAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53249ABBB6DF43E7C3618DC /* ContentView.swift */; };
+		2D9FACBBD946CC0B9BA2E082 /* WoundStageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929981ED6B52DD586B45D7E8 /* WoundStageTests.swift */; };
+		32BB50CFB5328190D51B97A1 /* WoundTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED262FBF78C3693BA91A38D3 /* WoundTrackApp.swift */; };
+		3409E505D217E8EC730DEF23 /* PatientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52694287B41D3880F895A4A3 /* PatientListView.swift */; };
+		3E7595C161CA737554A4E0D7 /* wound-stage-yolo26n-cls.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 4BF4DDB705495C920FBDBAEB /* wound-stage-yolo26n-cls.mlpackage */; };
+		496E0FC8161926FAB62682E6 /* yolo26s-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 0FDBA17803E2A25933FAB7C6 /* yolo26s-seg.mlpackage */; };
+		4F404788D68579FFBA79CD06 /* PhotoLibraryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971A4D04FA6709C6566AB7D7 /* PhotoLibraryPicker.swift */; };
+		580A64B79F41138D4E0E0FEF /* BodySite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DFDE1D5537259CB15F30 /* BodySite.swift */; };
+		6A5CEACB054864116E488488 /* wound-yolo26n-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 3BA61CE10B697CFF952FA95F /* wound-yolo26n-seg.mlpackage */; };
+		6CF0D8CBDCFDDFE749EE6D82 /* DetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C4E805E4DD4797CC84071 /* DetectionViewModel.swift */; };
+		874D4B034A15057EC94E68E5 /* wound-yolo26s-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = 6A1A3C01DCDA8EC1A5E21BF7 /* wound-yolo26s-seg.mlpackage */; };
+		87AC851D349FD782D99DF464 /* BodySitePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518FC9B60D59154EB45DA3C4 /* BodySitePicker.swift */; };
+		89C60BFE198C648F78117AAE /* AreaCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB47A3BC190B2BF92660B98 /* AreaCalculatorTests.swift */; };
+		8EA4E8278DA2EF076B8F7DB5 /* AssessmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF496E860AA121060F833A59 /* AssessmentDetailView.swift */; };
+		969CF2130BCBCD6960FF5F77 /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7386FD21BC719DDF694A6B6 /* PatientDetailView.swift */; };
+		9949080EACACB93C5C3F84DA /* SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C06D963A6B1598A25610A72 /* SeedData.swift */; };
+		9C81D7A6CD9D96D311998D61 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8DE590ADCA5DCB303E8AB /* Patient.swift */; };
+		9FE0F5AC27934674EC2BDAF3 /* AreaCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3278EB8CF5E78001CC2B0A6F /* AreaCalculator.swift */; };
+		A1EE288651592D300159C07E /* yolo26n-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = BE767A5D5BA0D3C522D143BD /* yolo26n-seg.mlpackage */; };
+		A914745CA6C0708BCC73FFA5 /* yolo26m-seg.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = ECEB7902262BF6D2EFCCECBC /* yolo26m-seg.mlpackage */; };
+		AE4E562A7A747FFBFD857DBD /* Assessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1838141DA9BFF14FE186979 /* Assessment.swift */; };
+		B51145D57B957437F0B083E8 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE96BEE0EE52B3EE75C257 /* PersistenceTests.swift */; };
+		C2BEA7735575A62EB58CB16B /* ARCapturedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E0892FF7E2AC9353C24C0 /* ARCapturedFrame.swift */; };
+		C77EB5164CF0FC83CB8A2348 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DACFA42AD38D14DC911E283 /* ShareSheet.swift */; };
+		E0E944AAC09371B033B31D34 /* StageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450950371774ECEBC221E23 /* StageClassifier.swift */; };
+		EFD3E4831BE7CEBD264649F2 /* CaptureInferenceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C38E31E190C89CC53B1630 /* CaptureInferenceResult.swift */; };
+		F9670FF43CEB85B176AF8C7A /* FileCleanup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC68F639AAA7863B589C62 /* FileCleanup.swift */; };
+		FCCBDF00779EDCA28C9B43E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACFDE24E0162CB5055A29F96 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8627BC3D2574E8343214587E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8C51054285A0DF8A88E71C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB42B3FEA04A80D999079F80;
+			remoteInfo = WoundTrack;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		077EC6BA8576EA20494CF683 /* Wound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wound.swift; sourceTree = "<group>"; };
+		0FDBA17803E2A25933FAB7C6 /* yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26s-seg.mlpackage"; path = "Resources/yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		1EFC68F639AAA7863B589C62 /* FileCleanup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCleanup.swift; sourceTree = "<group>"; };
+		2DACFA42AD38D14DC911E283 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		3278EB8CF5E78001CC2B0A6F /* AreaCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCalculator.swift; sourceTree = "<group>"; };
+		3BA61CE10B697CFF952FA95F /* wound-yolo26n-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-yolo26n-seg.mlpackage"; path = "Resources/wound-yolo26n-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		3C2AFF1C94BC312935DA5006 /* WoundStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundStore.swift; sourceTree = "<group>"; };
+		4450950371774ECEBC221E23 /* StageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageClassifier.swift; sourceTree = "<group>"; };
+		4562DFDE1D5537259CB15F30 /* BodySite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySite.swift; sourceTree = "<group>"; };
+		4BF4DDB705495C920FBDBAEB /* wound-stage-yolo26n-cls.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-stage-yolo26n-cls.mlpackage"; path = "Resources/wound-stage-yolo26n-cls.mlpackage"; sourceTree = SOURCE_ROOT; };
+		518FC9B60D59154EB45DA3C4 /* BodySitePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySitePicker.swift; sourceTree = "<group>"; };
+		52694287B41D3880F895A4A3 /* PatientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListView.swift; sourceTree = "<group>"; };
+		532F726DAA99BBD6DCAACD2F /* CaptureFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureFlowView.swift; sourceTree = "<group>"; };
+		54E9200FD4024F593A155DE8 /* ModelVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVariant.swift; sourceTree = "<group>"; };
+		58C38E31E190C89CC53B1630 /* CaptureInferenceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureInferenceResult.swift; sourceTree = "<group>"; };
+		5EF026867398ACD85BF7D428 /* WoundDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundDetailView.swift; sourceTree = "<group>"; };
+		679252B45AEBF00BB7F54D33 /* ModelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPickerView.swift; sourceTree = "<group>"; };
+		6A1A3C01DCDA8EC1A5E21BF7 /* wound-yolo26s-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "wound-yolo26s-seg.mlpackage"; path = "Resources/wound-yolo26s-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		6BD8DE590ADCA5DCB303E8AB /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		6C06D963A6B1598A25610A72 /* SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedData.swift; sourceTree = "<group>"; };
+		7CB5155386AF5B66CE3A6E7F /* WoundTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoundTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FB47A3BC190B2BF92660B98 /* AreaCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCalculatorTests.swift; sourceTree = "<group>"; };
+		929981ED6B52DD586B45D7E8 /* WoundStageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundStageTests.swift; sourceTree = "<group>"; };
+		971A4D04FA6709C6566AB7D7 /* PhotoLibraryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPicker.swift; sourceTree = "<group>"; };
+		A53249ABBB6DF43E7C3618DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A7386FD21BC719DDF694A6B6 /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
+		ACFDE24E0162CB5055A29F96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B78986391EE60E819D96105E /* WoundStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundStage.swift; sourceTree = "<group>"; };
+		BE767A5D5BA0D3C522D143BD /* yolo26n-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26n-seg.mlpackage"; path = "Resources/yolo26n-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		C4BA23E935B53A5BD8D384AC /* WoundInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundInfoPanel.swift; sourceTree = "<group>"; };
+		C7BD9A713FF0E642989ACF6D /* WoundTrackTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WoundTrackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3E0892FF7E2AC9353C24C0 /* ARCapturedFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCapturedFrame.swift; sourceTree = "<group>"; };
+		CF9C4E805E4DD4797CC84071 /* DetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionViewModel.swift; sourceTree = "<group>"; };
+		DF496E860AA121060F833A59 /* AssessmentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentDetailView.swift; sourceTree = "<group>"; };
+		E1838141DA9BFF14FE186979 /* Assessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assessment.swift; sourceTree = "<group>"; };
+		EB01B0F91E99770A9E0789D4 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		ECEB7902262BF6D2EFCCECBC /* yolo26m-seg.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "yolo26m-seg.mlpackage"; path = "Resources/yolo26m-seg.mlpackage"; sourceTree = SOURCE_ROOT; };
+		ED262FBF78C3693BA91A38D3 /* WoundTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoundTrackApp.swift; sourceTree = "<group>"; };
+		F9805FACBBD6A64164B02564 /* ARCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCaptureView.swift; sourceTree = "<group>"; };
+		F990D8E7413F49AFBD6B1518 /* BooleanMask+CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BooleanMask+CGImage.swift"; sourceTree = "<group>"; };
+		FAAE96BEE0EE52B3EE75C257 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		356B27A3D946DC744B72DDBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				264739A710D1342BBCA8DADF /* YOLO in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03CD92B010F873BF7456671B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CB5155386AF5B66CE3A6E7F /* WoundTrack.app */,
+				C7BD9A713FF0E642989ACF6D /* WoundTrackTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		198E66AC7FA884B97C181899 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				CB3E0892FF7E2AC9353C24C0 /* ARCapturedFrame.swift */,
+				F9805FACBBD6A64164B02564 /* ARCaptureView.swift */,
+				3278EB8CF5E78001CC2B0A6F /* AreaCalculator.swift */,
+				F990D8E7413F49AFBD6B1518 /* BooleanMask+CGImage.swift */,
+				58C38E31E190C89CC53B1630 /* CaptureInferenceResult.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		2060292E520144A70EF02A43 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ACFDE24E0162CB5055A29F96 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5F5F060A694911453397081C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A53249ABBB6DF43E7C3618DC /* ContentView.swift */,
+				CF9C4E805E4DD4797CC84071 /* DetectionViewModel.swift */,
+				EB01B0F91E99770A9E0789D4 /* ImagePicker.swift */,
+				679252B45AEBF00BB7F54D33 /* ModelPickerView.swift */,
+				54E9200FD4024F593A155DE8 /* ModelVariant.swift */,
+				971A4D04FA6709C6566AB7D7 /* PhotoLibraryPicker.swift */,
+				6C06D963A6B1598A25610A72 /* SeedData.swift */,
+				2DACFA42AD38D14DC911E283 /* ShareSheet.swift */,
+				4450950371774ECEBC221E23 /* StageClassifier.swift */,
+				C4BA23E935B53A5BD8D384AC /* WoundInfoPanel.swift */,
+				B78986391EE60E819D96105E /* WoundStage.swift */,
+				ED262FBF78C3693BA91A38D3 /* WoundTrackApp.swift */,
+				198E66AC7FA884B97C181899 /* Capture */,
+				EA9835A4517FFCF4587060F6 /* Models */,
+				6619B16E366B620140EF9CEE /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		63371C4BB0A9696F56B86F1C = {
+			isa = PBXGroup;
+			children = (
+				4BF4DDB705495C920FBDBAEB /* wound-stage-yolo26n-cls.mlpackage */,
+				3BA61CE10B697CFF952FA95F /* wound-yolo26n-seg.mlpackage */,
+				6A1A3C01DCDA8EC1A5E21BF7 /* wound-yolo26s-seg.mlpackage */,
+				ECEB7902262BF6D2EFCCECBC /* yolo26m-seg.mlpackage */,
+				BE767A5D5BA0D3C522D143BD /* yolo26n-seg.mlpackage */,
+				0FDBA17803E2A25933FAB7C6 /* yolo26s-seg.mlpackage */,
+				2060292E520144A70EF02A43 /* Resources */,
+				5F5F060A694911453397081C /* Sources */,
+				6FDB09AEFDE3077C5CB15AA2 /* Tests */,
+				03CD92B010F873BF7456671B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6619B16E366B620140EF9CEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF496E860AA121060F833A59 /* AssessmentDetailView.swift */,
+				518FC9B60D59154EB45DA3C4 /* BodySitePicker.swift */,
+				532F726DAA99BBD6DCAACD2F /* CaptureFlowView.swift */,
+				A7386FD21BC719DDF694A6B6 /* PatientDetailView.swift */,
+				52694287B41D3880F895A4A3 /* PatientListView.swift */,
+				5EF026867398ACD85BF7D428 /* WoundDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6FDB09AEFDE3077C5CB15AA2 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7FB47A3BC190B2BF92660B98 /* AreaCalculatorTests.swift */,
+				FAAE96BEE0EE52B3EE75C257 /* PersistenceTests.swift */,
+				929981ED6B52DD586B45D7E8 /* WoundStageTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		EA9835A4517FFCF4587060F6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E1838141DA9BFF14FE186979 /* Assessment.swift */,
+				4562DFDE1D5537259CB15F30 /* BodySite.swift */,
+				1EFC68F639AAA7863B589C62 /* FileCleanup.swift */,
+				6BD8DE590ADCA5DCB303E8AB /* Patient.swift */,
+				077EC6BA8576EA20494CF683 /* Wound.swift */,
+				3C2AFF1C94BC312935DA5006 /* WoundStore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C86B30677BE6DBC0F30FCEBC /* WoundTrackTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96315B099F11F2E832EA37B5 /* Build configuration list for PBXNativeTarget "WoundTrackTests" */;
+			buildPhases = (
+				B9EA3959C00F76CFE6B45357 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14CC463C8B67E8A0E715DED5 /* PBXTargetDependency */,
+			);
+			name = WoundTrackTests;
+			packageProductDependencies = (
+			);
+			productName = WoundTrackTests;
+			productReference = C7BD9A713FF0E642989ACF6D /* WoundTrackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CB42B3FEA04A80D999079F80 /* WoundTrack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDBACB780C1EDD0063FA4D21 /* Build configuration list for PBXNativeTarget "WoundTrack" */;
+			buildPhases = (
+				FBD1D2EA0109D2ABF1B93EF5 /* Sources */,
+				CC771CCDDC881EAAD3A73735 /* Resources */,
+				356B27A3D946DC744B72DDBB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WoundTrack;
+			packageProductDependencies = (
+				63744F3428EE5491F78F285A /* YOLO */,
+			);
+			productName = WoundTrack;
+			productReference = 7CB5155386AF5B66CE3A6E7F /* WoundTrack.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C8C51054285A0DF8A88E71C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = 2DF8B456D1EB1D7EC20F87B8 /* Build configuration list for PBXProject "WoundTrack" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 63371C4BB0A9696F56B86F1C;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A8BFB1210689CE0C3F0A5F7F /* XCRemoteSwiftPackageReference "yolo-ios-app" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 03CD92B010F873BF7456671B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB42B3FEA04A80D999079F80 /* WoundTrack */,
+				C86B30677BE6DBC0F30FCEBC /* WoundTrackTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC771CCDDC881EAAD3A73735 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCCBDF00779EDCA28C9B43E2 /* Assets.xcassets in Resources */,
+				3E7595C161CA737554A4E0D7 /* wound-stage-yolo26n-cls.mlpackage in Resources */,
+				6A5CEACB054864116E488488 /* wound-yolo26n-seg.mlpackage in Resources */,
+				874D4B034A15057EC94E68E5 /* wound-yolo26s-seg.mlpackage in Resources */,
+				A914745CA6C0708BCC73FFA5 /* yolo26m-seg.mlpackage in Resources */,
+				A1EE288651592D300159C07E /* yolo26n-seg.mlpackage in Resources */,
+				496E0FC8161926FAB62682E6 /* yolo26s-seg.mlpackage in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B9EA3959C00F76CFE6B45357 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89C60BFE198C648F78117AAE /* AreaCalculatorTests.swift in Sources */,
+				B51145D57B957437F0B083E8 /* PersistenceTests.swift in Sources */,
+				2D9FACBBD946CC0B9BA2E082 /* WoundStageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBD1D2EA0109D2ABF1B93EF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A47574CC0C8686B87521C2 /* ARCaptureView.swift in Sources */,
+				C2BEA7735575A62EB58CB16B /* ARCapturedFrame.swift in Sources */,
+				9FE0F5AC27934674EC2BDAF3 /* AreaCalculator.swift in Sources */,
+				AE4E562A7A747FFBFD857DBD /* Assessment.swift in Sources */,
+				8EA4E8278DA2EF076B8F7DB5 /* AssessmentDetailView.swift in Sources */,
+				580A64B79F41138D4E0E0FEF /* BodySite.swift in Sources */,
+				87AC851D349FD782D99DF464 /* BodySitePicker.swift in Sources */,
+				1882BDF732FC7B1B40B2E7AC /* BooleanMask+CGImage.swift in Sources */,
+				2BA63C61F0DFD84511730419 /* CaptureFlowView.swift in Sources */,
+				EFD3E4831BE7CEBD264649F2 /* CaptureInferenceResult.swift in Sources */,
+				2C8772996600D100A021EAAD /* ContentView.swift in Sources */,
+				6CF0D8CBDCFDDFE749EE6D82 /* DetectionViewModel.swift in Sources */,
+				F9670FF43CEB85B176AF8C7A /* FileCleanup.swift in Sources */,
+				20B23700D254DCBF115EB1F3 /* ImagePicker.swift in Sources */,
+				21AC6179673CB4F9DDFB5948 /* ModelPickerView.swift in Sources */,
+				0E10386868855EC98395CB35 /* ModelVariant.swift in Sources */,
+				9C81D7A6CD9D96D311998D61 /* Patient.swift in Sources */,
+				969CF2130BCBCD6960FF5F77 /* PatientDetailView.swift in Sources */,
+				3409E505D217E8EC730DEF23 /* PatientListView.swift in Sources */,
+				4F404788D68579FFBA79CD06 /* PhotoLibraryPicker.swift in Sources */,
+				9949080EACACB93C5C3F84DA /* SeedData.swift in Sources */,
+				C77EB5164CF0FC83CB8A2348 /* ShareSheet.swift in Sources */,
+				E0E944AAC09371B033B31D34 /* StageClassifier.swift in Sources */,
+				049258625FB75D4BF6E52A5F /* Wound.swift in Sources */,
+				16CB89E367331982E0358DF2 /* WoundDetailView.swift in Sources */,
+				249BC99415B42156DAD3F783 /* WoundInfoPanel.swift in Sources */,
+				04003A8448DE547DC5B2F55D /* WoundStage.swift in Sources */,
+				22C71498F532D893EB871912 /* WoundStore.swift in Sources */,
+				32BB50CFB5328190D51B97A1 /* WoundTrackApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14CC463C8B67E8A0E715DED5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB42B3FEA04A80D999079F80 /* WoundTrack */;
+			targetProxy = 8627BC3D2574E8343214587E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		69E8AF5F29326B4876A6E7CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZZ5L8B9Z23;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.eleg5600.WoundTrack;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7AA14C34937C875ED7A7A810 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		81DF34C57065932ACC5E8AF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.eleg5600.WoundTrackTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WoundTrack.app/WoundTrack";
+			};
+			name = Debug;
+		};
+		B09901F68306E207A3683A54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.eleg5600.WoundTrackTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WoundTrack.app/WoundTrack";
+			};
+			name = Release;
+		};
+		B3A65F9961E0AAAE78492861 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZZ5L8B9Z23;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.eleg5600.WoundTrack;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FDD14FEC3D07DB7064AED805 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DF8B456D1EB1D7EC20F87B8 /* Build configuration list for PBXProject "WoundTrack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDD14FEC3D07DB7064AED805 /* Debug */,
+				7AA14C34937C875ED7A7A810 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		96315B099F11F2E832EA37B5 /* Build configuration list for PBXNativeTarget "WoundTrackTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81DF34C57065932ACC5E8AF1 /* Debug */,
+				B09901F68306E207A3683A54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FDBACB780C1EDD0063FA4D21 /* Build configuration list for PBXNativeTarget "WoundTrack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3A65F9961E0AAAE78492861 /* Debug */,
+				69E8AF5F29326B4876A6E7CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A8BFB1210689CE0C3F0A5F7F /* XCRemoteSwiftPackageReference "yolo-ios-app" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ethanlee928/yolo-ios-app.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		63744F3428EE5491F78F285A /* YOLO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8BFB1210689CE0C3F0A5F7F /* XCRemoteSwiftPackageReference "yolo-ios-app" */;
+			productName = YOLO;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C8C51054285A0DF8A88E71C5 /* Project object */;
+}

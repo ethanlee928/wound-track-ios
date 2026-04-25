@@ -178,6 +178,39 @@ class DetectionViewModel: ObservableObject {
         }
     }
 
+    /// Run inference and return everything the longitudinal capture flow needs:
+    /// the annotated UIImage, the combined mask CGImage, the first detection's
+    /// bounding box (for mask-intersection), and the top stage label. Does NOT
+    /// mutate any `@Published` state on this view model, so it can coexist with
+    /// the single-shot flow.
+    ///
+    /// Returns nil if the model isn't ready or no wound was detected.
+    func inferForCapture(image: UIImage) async -> CaptureInferenceResult? {
+        guard let model = model, modelReady else { return nil }
+        let classifier = self.stageClassifier
+        return await Task.detached(priority: .userInitiated) { () -> CaptureInferenceResult? in
+            let result = model(image)
+            guard let firstBox = result.boxes.first else { return nil }
+
+            var stageLabel: StageLabel?
+            if let classifier = classifier, classifier.isReady {
+                let padded = paddedBBox(firstBox.xywh, in: image.size)
+                if let crop = image.cropped(to: padded) {
+                    stageLabel = classifier.classify(crops: [crop]).first ?? nil
+                }
+            }
+            return CaptureInferenceResult(
+                annotatedImage: result.annotatedImage,
+                combinedMask: result.masks?.combinedMask,
+                firstBox: firstBox.xywh,
+                className: firstBox.cls,
+                confidence: firstBox.conf,
+                stageName: stageLabel?.name,
+                stageConfidence: stageLabel?.confidence
+            )
+        }.value
+    }
+
     /// Draw numbered circular badges at the top-left of each bounding box.
     nonisolated private static func drawObjectBadges(on image: UIImage, boxes: [CGRect]) -> UIImage {
         guard !boxes.isEmpty else { return image }

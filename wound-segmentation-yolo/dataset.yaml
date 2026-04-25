@@ -1,0 +1,12 @@
+# Ultralytics YOLO segmentation dataset config
+# Source: AZH/FUSeg (Foot Ulcer Segmentation Challenge) — single-class binary
+# wound masks converted to polygon labels by scripts/convert_masks_to_yolo.py.
+
+path: ./dataset
+train: images/train
+val: images/val
+# No test labels in the source FUSeg release — only the train/val splits are
+# usable for supervised training.
+
+names:
+  0: wound

@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B63BE4491E437137804000FC"
-               BuildableName = "WoundDetector.app"
-               BlueprintName = "WoundDetector"
-               ReferencedContainer = "container:WoundDetector.xcodeproj">
+               BlueprintIdentifier = "CB42B3FEA04A80D999079F80"
+               BuildableName = "WoundTrack.app"
+               BlueprintName = "WoundTrack"
+               ReferencedContainer = "container:WoundTrack.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B63BE4491E437137804000FC"
-            BuildableName = "WoundDetector.app"
-            BlueprintName = "WoundDetector"
-            ReferencedContainer = "container:WoundDetector.xcodeproj">
+            BlueprintIdentifier = "CB42B3FEA04A80D999079F80"
+            BuildableName = "WoundTrack.app"
+            BlueprintName = "WoundTrack"
+            ReferencedContainer = "container:WoundTrack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -44,10 +44,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "60BE50BC18DFFE8545A365F5"
-               BuildableName = "WoundDetectorTests.xctest"
-               BlueprintName = "WoundDetectorTests"
-               ReferencedContainer = "container:WoundDetector.xcodeproj">
+               BlueprintIdentifier = "C86B30677BE6DBC0F30FCEBC"
+               BuildableName = "WoundTrackTests.xctest"
+               BlueprintName = "WoundTrackTests"
+               ReferencedContainer = "container:WoundTrack.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,10 +68,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B63BE4491E437137804000FC"
-            BuildableName = "WoundDetector.app"
-            BlueprintName = "WoundDetector"
-            ReferencedContainer = "container:WoundDetector.xcodeproj">
+            BlueprintIdentifier = "CB42B3FEA04A80D999079F80"
+            BuildableName = "WoundTrack.app"
+            BlueprintName = "WoundTrack"
+            ReferencedContainer = "container:WoundTrack.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -87,10 +87,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B63BE4491E437137804000FC"
-            BuildableName = "WoundDetector.app"
-            BlueprintName = "WoundDetector"
-            ReferencedContainer = "container:WoundDetector.xcodeproj">
+            BlueprintIdentifier = "CB42B3FEA04A80D999079F80"
+            BuildableName = "WoundTrack.app"
+            BlueprintName = "WoundTrack"
+            ReferencedContainer = "container:WoundTrack.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>

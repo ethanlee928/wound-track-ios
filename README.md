@@ -1,20 +1,23 @@
-# WoundDetector
+# WoundTrack
 
-On-device wound segmentation iOS app powered by **YOLO26-seg** running through CoreML. Final project for **ELEG5600 (CUHK)**.
+On-device **longitudinal wound tracking** for iOS, powered by **YOLO26-seg** (CoreML) for segmentation, **YOLO26-cls** for stage classification, and **ARKit + LiDAR** for real-world cm² area measurement. Final project for **ELEG5600 (CUHK)**.
 
-The app lets a user pick or capture a photo, runs instance segmentation entirely on-device, and overlays the predicted wound mask. It bundles five model variants — three pretrained COCO baselines plus two fine-tuned wound-specific models — selectable from a two-dimensional picker (task × size).
+WoundTrack lets a clinician record a wound over time on a single iPhone Pro: scan with the camera, get a segmented mask + stage label + measured area in cm², and watch the healing trajectory across visits — entirely on-device, no PHI leaving the phone.
+
+The app started as a stateless single-shot wound detector and pivoted mid-project once the question reframed from *"what is this?"* to *"is it getting better?"*
 
 ---
 
 ## Features
 
+- **Longitudinal model** — patients → wounds → assessments stored locally with SwiftData; healing curves charted with Swift Charts
 - **On-device inference** — no network round-trips, no PHI leaving the phone
-- **Five bundled YOLO26-seg variants** — General × {Nano, Small, Medium}, Wound × {Nano, Small}
-- **Two-row model picker** — Task selector (General COCO / Wound FUSeg) + Size selector (N / S / M)
-- **Camera + photo library** input flows
-- **EXIF-aware orientation handling** so portrait camera photos aren't rotated during inference
-- **Async model loading** with persistence — last-used variant restored on launch
-- **Save / share** annotated results
+- **Two-stage clinical pipeline** — segmentation (PGIE) followed by per-mask stage classification (SGIE)
+- **LiDAR-measured area in cm²** — ARKit `sceneDepth` + camera intrinsics, with plane-fit oblique correction
+- **Body-site map picker** — tap a posterior-view diagram to anatomically tag each wound
+- **Distance-gated capture** — shutter only enables in the 20–60 cm sweet spot for accurate depth
+- **Camera + photo library** input flows for the legacy stateless path
+- **Two-row model picker** — Task (General COCO / Wound FUSeg) × Size (N / S / M)
 
 ---
 
@@ -22,55 +25,76 @@ The app lets a user pick or capture a photo, runs instance segmentation entirely
 
 ```
 final-project/
-├── WoundDetector/        # SwiftUI iOS app (xcodegen-driven)
-└── model-export/         # Python uv project for CoreML export
+├── WoundTrack/                  # SwiftUI iOS app (xcodegen-driven)
+├── model-export/                # uv project: .pt → .mlpackage (CoreML)
+└── wound-segmentation-yolo/     # uv project: training scripts (runs on GPU server)
 ```
 
-The two components are loosely coupled:
+The three components are loosely coupled and reflect the real workflow:
 
-1. **`model-export/`** turns Ultralytics `.pt` checkpoints into CoreML `.mlpackage` files at the right input resolution.
-2. **`WoundDetector/`** bundles those `.mlpackage` files as build resources, compiles them to `.mlmodelc` at build time, and loads them on-device via the `YOLO` Swift package.
-
-Training itself happens outside this repo on a GPU server — only the resulting checkpoints flow back here.
+1. **`wound-segmentation-yolo/`** trains the segmentation and staging models on a CUDA box. See its [README](wound-segmentation-yolo/README.md).
+2. **`model-export/`** turns trained Ultralytics `.pt` checkpoints into CoreML `.mlpackage` files at the right input resolution.
+3. **`WoundTrack/`** bundles those `.mlpackage` files as build resources, compiles them to `.mlmodelc` at build time, and runs them on-device via the [`YOLO`](https://github.com/ethanlee928/yolo-ios-app) Swift package.
 
 ---
 
 ## Bundled models
 
-| Variant | Task | Backbone | Params | Training data | mAP50 (mask) | `.mlpackage` |
+| Variant | Task | Backbone | Params | Training data | mAP50 / Top-1 | Size |
 |---|---|---|---|---|---|---|
 | `yolo26n-seg` | General | YOLO26-N | 3.0 M | COCO | — (baseline) | ~5 MB |
 | `yolo26s-seg` | General | YOLO26-S | 11.4 M | COCO | — (baseline) | ~20 MB |
 | `yolo26m-seg` | General | YOLO26-M | 27.0 M | COCO | — (baseline) | ~50 MB |
-| **`wound-yolo26n-seg`** | **Wound** | YOLO26-N | 3.0 M | AZH/FUSeg | **0.896** | **~5 MB** |
-| **`wound-yolo26s-seg`** | **Wound** | YOLO26-S | 11.4 M | AZH/FUSeg | **0.897** | **~20 MB** |
+| **`wound-yolo26n-seg`** | **Wound seg (PGIE)** | YOLO26-N | 3.0 M | AZH/FUSeg | **mAP50 0.896** | ~5 MB |
+| **`wound-yolo26s-seg`** | **Wound seg (PGIE)** | YOLO26-S | 11.4 M | AZH/FUSeg | **mAP50 0.897** | ~20 MB |
+| **`wound-stage-yolo26n-cls`** | **PI staging (SGIE)** | YOLO26-N-cls | — | Roboflow PI-staging | **Top-1 ~75.8%** | ~5 MB |
 
-The wound variants are fine-tuned on the [AZH FUSeg](https://fusc.grand-challenge.org/) (Foot Ulcer Segmentation) dataset — 810 train + 200 val images, single-class binary segmentation.
+The wound-seg models are fine-tuned on [AZH FUSeg](https://fusc.grand-challenge.org/) (810 train + 200 val, single-class). The medium variant was trained but discarded — it overfit on the small dataset (mAP50 0.872, lower than nano/small) and runs slower. *Smaller wins on small medical datasets* is itself a useful finding.
 
-The **medium wound variant was trained but discarded**: it overfit on the small dataset (mAP50 0.872, lower than nano/small) and inference is slower. Smaller models won here, which is itself a useful finding for the final report.
+The PI staging classifier is a placeholder slot, intended to be swapped for a DFUC-2021 infection/ischaemia classifier when dataset access lands.
 
 ---
 
 ## Project structure
 
 ```
-WoundDetector/
+WoundTrack/
 ├── project.yml                          # xcodegen source of truth
-├── Info.plist                           # camera/photo library usage strings
+├── Info.plist                           # camera/photo library/AR usage strings
+├── Resources/
+│   ├── *.mlpackage                      # CoreML models (gitignored)
+│   └── Assets.xcassets/                 # app icon
 ├── Sources/
-│   ├── WoundDetectorApp.swift           # @main entry
-│   ├── ContentView.swift                # main screen layout
+│   ├── WoundTrackApp.swift              # @main, SwiftData container
+│   ├── ContentView.swift                # entry — patient list
 │   ├── DetectionViewModel.swift         # model loading + inference orchestration
+│   ├── StageClassifier.swift            # SGIE wrapper (per-mask cls)
 │   ├── ModelVariant.swift               # 5-case enum, Task × Size
 │   ├── ModelPickerView.swift            # two-row segmented picker
-│   ├── WoundStage.swift                 # NPIAP staging enum (for future staging model)
+│   ├── WoundStage.swift                 # NPIAP staging enum
 │   ├── WoundInfoPanel.swift             # detection result list
-│   ├── ImagePicker.swift                # UIImagePickerController wrapper (camera)
-│   ├── PhotoLibraryPicker.swift         # PHPickerViewController wrapper (library)
-│   └── ShareSheet.swift                 # UIActivityViewController wrapper
-├── Tests/
-│   └── WoundStageTests.swift            # XCTest for class-label parsing
-├── Resources/                           # *.mlpackage files (gitignored)
+│   ├── ImagePicker.swift                # UIImagePickerController wrapper
+│   ├── PhotoLibraryPicker.swift         # PHPickerViewController wrapper
+│   ├── ShareSheet.swift                 # UIActivityViewController wrapper
+│   ├── SeedData.swift                   # idempotent first-launch demo data
+│   ├── Models/                          # SwiftData layer
+│   │   ├── Patient.swift, Wound.swift, Assessment.swift, BodySite.swift
+│   │   ├── WoundStore.swift             # @ModelActor for off-main writes
+│   │   └── FileCleanup.swift            # remove image files on cascade delete
+│   ├── Capture/                         # AR + measurement
+│   │   ├── ARCaptureView.swift          # ARSession + sceneDepth + shutter gate
+│   │   ├── ARCapturedFrame.swift
+│   │   ├── AreaCalculator.swift         # cm² from depth + mask + intrinsics
+│   │   ├── BooleanMask+CGImage.swift    # rasterize YOLO mask to capture res
+│   │   └── CaptureInferenceResult.swift
+│   └── Views/                           # SwiftUI screens
+│       ├── PatientListView.swift, PatientDetailView.swift
+│       ├── WoundDetailView.swift        # area-over-time chart + assessment list
+│       ├── AssessmentDetailView.swift
+│       ├── CaptureFlowView.swift        # capturing → processing → review
+│       └── BodySitePicker.swift         # posterior-view body diagram
+├── Tests/                               # XCTest
+│   ├── WoundStageTests.swift, AreaCalculatorTests.swift, PersistenceTests.swift
 └── scripts/
     └── fix-mlpackage-buildphase.py      # post-process generated pbxproj
 
@@ -78,6 +102,10 @@ model-export/
 ├── pyproject.toml                       # uv project, ultralytics + coremltools
 ├── uv.lock
 └── main.py
+
+wound-segmentation-yolo/
+├── pyproject.toml, uv.lock, dataset.yaml
+└── scripts/                             # training + dataset prep
 ```
 
 ---
@@ -87,13 +115,13 @@ model-export/
 ### Prerequisites
 
 - macOS with Xcode 16+
+- An **iPhone Pro** with LiDAR for on-device testing (CoreML + ARKit don't run in the simulator for this app)
 - [`xcodegen`](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`)
 - [`uv`](https://github.com/astral-sh/uv) (`brew install uv`)
-- An iPhone for on-device testing (CoreML doesn't run in the simulator for these models)
 
 ### Recover the model artifacts
 
-The `.pt` and `.mlpackage` files are intentionally not in git (binary artifacts). Recover them before building:
+The `.pt` and `.mlpackage` files are intentionally not in git. Recover them before building:
 
 ```bash
 cd model-export
@@ -104,118 +132,111 @@ uv run yolo export model=yolo26n-seg.pt format=coreml imgsz=640
 uv run yolo export model=yolo26s-seg.pt format=coreml imgsz=640
 uv run yolo export model=yolo26m-seg.pt format=coreml imgsz=640
 
-# Wound-fine-tuned models — copy the trained .pt back from training server first,
+# Wound-fine-tuned models — copy trained .pt back from training server first,
 # then export at the native FUSeg resolution (imgsz=512).
-# Place wound-yolo26n-seg.pt and wound-yolo26s-seg.pt in model-export/, then:
-uv run yolo export model=wound-yolo26n-seg.pt format=coreml imgsz=512
-uv run yolo export model=wound-yolo26s-seg.pt format=coreml imgsz=512
+uv run yolo export model=wound-yolo26n-seg.pt format=coreml imgsz=512 nms=False
+uv run yolo export model=wound-yolo26s-seg.pt format=coreml imgsz=512 nms=False
+
+# Stage classifier (SGIE) — exported at YOLO26-cls native size
+uv run yolo export model=wound-stage-yolo26n-cls.pt format=coreml imgsz=224
 
 # Move the exports into the iOS app's resources
-cp -R wound-yolo26n-seg.mlpackage   ../WoundDetector/Resources/
-cp -R wound-yolo26s-seg.mlpackage   ../WoundDetector/Resources/
-cp -R yolo26n-seg.mlpackage         ../WoundDetector/Resources/
-cp -R yolo26s-seg.mlpackage         ../WoundDetector/Resources/
-cp -R yolo26m-seg.mlpackage         ../WoundDetector/Resources/
+cp -R *.mlpackage ../WoundTrack/Resources/
 ```
+
+For training the wound-specific models from scratch, see [`wound-segmentation-yolo/README.md`](wound-segmentation-yolo/README.md).
 
 ### Build the iOS app
 
 ```bash
-cd WoundDetector
+cd WoundTrack
 xcodegen generate
 python3 scripts/fix-mlpackage-buildphase.py
-open WoundDetector.xcodeproj
+open WoundTrack.xcodeproj
 ```
 
-In Xcode, set your development team under **Signing & Capabilities**, then build and run on a connected iPhone.
+In Xcode, set your development team under **Signing & Capabilities**, then build and run on a connected iPhone Pro.
 
 ---
 
-## Training pipeline
+## How the pieces fit at runtime
 
-The wound models were trained on the [AZH FUSeg](https://fusc.grand-challenge.org/) dataset (810 train / 200 val, 512×512 binary masks).
-
-High-level pipeline:
-
-1. **Mask → polygon conversion**: AZH ships binary RGB masks; YOLO segmentation expects polygon contours. A converter walks each mask, extracts external contours via OpenCV `findContours`, simplifies them with Douglas-Peucker (`approxPolyDP`), drops noise (<0.01% area), and writes one normalized polygon per line in the YOLO `.txt` format.
-2. **Symlinked dataset structure**: images are symlinked (not copied) into the YOLO `images/{train,val}/` layout to avoid duplication.
-3. **`dataset.yaml`**: single-class config (`0: wound`).
-4. **Training**: `yolo26{n,s,m}-seg.pt` fine-tuned for up to 200 epochs with `patience=30` early stopping, `imgsz=512` (native FUSeg resolution to avoid resize), batch=32, mixed precision, cosine LR.
-5. **Augmentation**: tuned for medical images — disabled extreme color jitter (`hsv_s=0.4`, `hsv_v=0.3`), kept mosaic + flips + small rotations.
-
-### Results
-
-| Variant | Epochs (early-stopped) | Best mAP50 (M) | Best mAP50-95 (M) | Per-epoch | Inference (ms/image, 3090) |
-|---|---|---|---|---|---|
-| `yolo26n-seg` | 182 / 200 | **0.896** | 0.596 | ~8 s | 2.6 |
-| `yolo26s-seg` | 180 / 200 | **0.897** | 0.608 | ~10 s | 3.3 |
-| `yolo26m-seg` | 66 / 200 | 0.872 | 0.571 | ~16 s | 5.7 |
-
-Nano and Small converged to nearly identical accuracy, suggesting we hit a dataset ceiling rather than a capacity ceiling. Medium underperformed — almost certainly overfitting on 810 training images.
+```
+┌──────────────────────────────────────────────────────────────────┐
+│  ARCaptureView (ARSession + .sceneDepth)                         │
+│    ↓ ARCapturedFrame { image, depth, confidence, intrinsics }    │
+│  CaptureFlowView                                                  │
+│    ├─ DetectionViewModel.inferForCapture()                        │
+│    │     ├─ PGIE: wound-seg → mask + bbox + score                 │
+│    │     └─ SGIE: stage cls on padded crop → stage + confidence   │
+│    ├─ BooleanMask.from(cgImage:targetSize:) → mask at capture res │
+│    └─ AreaCalculator.measure() → cm² + tilt angle + valid pixels  │
+│       └─ Σ (d/fx)(d/fy) on mask pixels, scaled by 1/cos(θ) from   │
+│          a least-squares plane fit z = aX + bY + c                │
+│           ↓ Assessment(image, mask, area, stage, notes)            │
+│  SwiftData (Patient ▸ Wound ▸ Assessment, all on main context)    │
+│    ↓ @Bindable + @Query                                            │
+│  WoundDetailView → Swift Charts area-over-time + assessment list  │
+└──────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
 ## Key technical decisions
 
-These are the decisions worth remembering for the final report:
+These are the decisions worth remembering for the report:
 
-### 1. Native 512×512 inference
+### 1. LiDAR + intrinsics + mask for cm² (not ArUco markers, not monocular)
 
-The FUSeg dataset is uniformly 512×512. We train *and* export at `imgsz=512`, which:
+ARKit on iPhone Pro exposes a 256×192 `sceneDepth` map with per-pixel confidence, plus the camera intrinsic matrix. For each masked pixel at depth `d` we compute its physical area via the pinhole identity:
+
+```
+area_pixel = (d / fx) · (d / fy)
+```
+
+Summed across the mask and scaled by `1 / cos(θ)` from a least-squares plane fit `z = aX + bY + c`, this gives an oblique-corrected cm² in one shot — no fiducials, no manual scale references. NaN/zero depths and low-confidence pixels are skipped.
+
+### 2. Coordinate-space discipline
+
+YOLO returns boxes in **capture image space** (~1920×1440) and masks at **model input size** (~640×640). Mixing the two crashes with a `Range requires lowerBound <= upperBound`. Fix: rasterize the mask to capture resolution before intersecting with the box, and guard against inverted ranges in `BooleanMask.intersected(with:)`.
+
+Same theme on display: the AR preview uses `.resizeAspectFill` by default, which crops the 4:3 sensor frame into a portrait screen and makes the live view feel zoomed-in vs the post-capture review. Switching to `.resizeAspect` (letterbox) gives a WYSIWYG preview.
+
+And on storage: keep depth + mask + intrinsics in **landscape-native frame** for inference math, and rotate **only at save/display** so timeline thumbnails read upright without breaking the area calculation.
+
+### 3. SwiftData: same-context mutations
+
+The view layer uses `@Query` and `@Bindable`. Writes from a separate `@ModelActor` context don't propagate to those caches — relationships in the main context end up with stale or invalidated `PersistentIdentifier`s, and the next render crashes with *"This model instance was invalidated…"*.
+
+**Rule:** if a view has `@Bindable` or `@Query` on the thing you're mutating, mutate on the same `modelContext`. This applies to inserts, deletes, *and* cascade deletes. The `WoundStore` actor is kept for off-main bulk work but is no longer used from delete/insert paths in the UI.
+
+### 4. Native 512×512 inference for wound models
+
+FUSeg ships uniformly at 512×512. Training and export both use `imgsz=512`, which:
 
 - Avoids any resize during inference
 - Keeps the model input shape divisible by the YOLO stride (32)
-- Reduces inference cost ~1.5× vs the default 640 (cost scales with H × W)
-- Means a smaller, faster, more accurate on-device model
+- Reduces inference cost ~1.5× vs the default 640
+- Yields a smaller, faster, more accurate on-device model
 
-The Swift `YOLO` package automatically reads the model's input shape from CoreML metadata, so no app code changes are needed when switching between 512 and 640.
+The Swift `YOLO` package reads input shape from CoreML metadata, so no app code changes are needed when switching between 512 and 640.
 
-### 2. xcodegen + post-process script for `.mlpackage`
+### 5. xcodegen + post-process script for `.mlpackage`
 
-`xcodegen` treats `.mlpackage` as a generic folder reference and puts it in the **Resources** build phase. That's wrong: Xcode just copies the folder verbatim instead of compiling it to `.mlmodelc`.
+`xcodegen` treats `.mlpackage` as a generic folder reference and puts it in **Resources**. That's wrong — Xcode just copies the folder verbatim instead of compiling it to `.mlmodelc`. **`scripts/fix-mlpackage-buildphase.py`** runs after `xcodegen generate` and patches the generated `pbxproj` to:
 
-The fix is **`scripts/fix-mlpackage-buildphase.py`**, run after `xcodegen generate`. It patches the generated `pbxproj` to:
+- Set `lastKnownFileType = folder.mlpackage` so Xcode recognises CoreML
+- Move the `PBXBuildFile` references from `PBXResourcesBuildPhase` to `PBXSourcesBuildPhase` so they compile at build time
 
-- Set `lastKnownFileType = folder.mlpackage` so Xcode recognizes it as a CoreML model
-- Move the `PBXBuildFile` references from `PBXResourcesBuildPhase` to `PBXSourcesBuildPhase` so they're compiled to `.mlmodelc` at build time
+This is the only step in the build pipeline not expressible in `project.yml`.
 
-This is the only step in the build pipeline that isn't expressible in `project.yml`.
+### 6. EXIF orientation normalization
 
-### 3. Two-row model picker
+Camera photos on iOS carry an `imageOrientation` field (often `.right` for portrait shots). UIKit respects it for display, but Vision/CoreML processes the raw pixel buffer and ignores the metadata — the model sees a sideways image. `UIImage.normalizedOrientation()` re-draws to `.up` orientation, baking rotation into the pixel data before inference.
 
-Earlier iterations used a single segmented picker with N/S/M, but adding the wound variants made the design two-dimensional (Task × Size). Rather than cramming five buttons into one row, the picker is now:
+### 7. CoreML export environment pinning
 
-- **Row 1** (Task): segmented `[General | Wound]`
-- **Row 2** (Size): segmented `[N | S | M]` — *dynamically* shows only sizes that exist for the current task
-
-When the user switches task, the picker tries to keep the current size (e.g. switching from `General · Small` to `Wound · Small`), falling back to nano if not available. The size segment for "M" disappears entirely when in Wound mode rather than being greyed out.
-
-### 4. EXIF orientation normalization
-
-Camera photos on iOS have an `imageOrientation` field (often `.right` for portrait shots). UIKit respects this for *display*, but Vision/CoreML processes the raw pixel buffer and ignores the metadata — so the model sees a sideways image.
-
-`DetectionViewModel.runInference(on:)` calls a `UIImage.normalizedOrientation()` extension that re-draws the image with `.up` orientation, baking the rotation into the pixel data before handing it to the model. Without this, every portrait photo gets segmented sideways.
-
-### 5. Strong reference during async model load
-
-The `YOLO` initializer returns synchronously but does its CoreML compilation on a background thread, calling a completion handler. Inside that handler the `[weak self]` capture means the `YOLO` instance has nothing else holding it alive — and gets deallocated mid-compile, silently failing to load.
-
-The fix is to immediately store the returned instance into `self.model` *before* the completion fires:
-
-```swift
-let yolo = YOLO(variant.rawValue, task: .segment) { [weak self] result in ... }
-self.model = yolo  // strong ref keeps it alive through async compilation
-```
-
-### 6. CoreML export environment pinning
-
-A clean install of `coremltools 9.0` produces this cryptic error during YOLO export:
-
-```
-TypeError: only 0-dimensional arrays can be converted to Python scalars
-```
-
-This is [apple/coremltools#2633](https://github.com/apple/coremltools/issues/2633): newer NumPy and torch versions broke the converter. The fix is to pin in `pyproject.toml`:
+A clean install of `coremltools 9.0` produces `TypeError: only 0-dimensional arrays can be converted to Python scalars` during YOLO export — [apple/coremltools#2633](https://github.com/apple/coremltools/issues/2633). The fix is to pin in `pyproject.toml`:
 
 ```toml
 "torch>=2.7.0,<2.8.0",            # coremltools 9.0 only supports torch ≤ 2.7
@@ -223,21 +244,37 @@ This is [apple/coremltools#2633](https://github.com/apple/coremltools/issues/263
 "numpy<2.4.0",                    # numpy 2.4+ broke array→scalar coercion
 ```
 
-### 7. Ultralytics `device=` overrides `CUDA_VISIBLE_DEVICES`
+### 8. Ultralytics `device=` overrides `CUDA_VISIBLE_DEVICES`
 
-When launching parallel training runs on different GPUs, the obvious approach is to set `os.environ["CUDA_VISIBLE_DEVICES"] = "2"` before importing torch, then pass `device=0` to ultralytics. **This silently fails**: `ultralytics/utils/torch_utils.py:select_device()` *overwrites* `CUDA_VISIBLE_DEVICES` with whatever you pass in `device=`, so two parallel runs both end up on physical GPU 0.
+When launching parallel training runs, the obvious approach is to set `os.environ["CUDA_VISIBLE_DEVICES"] = "2"` then pass `device=0` to ultralytics. **This silently fails**: `select_device()` overwrites `CUDA_VISIBLE_DEVICES` with whatever you pass in `device=`, so two parallel runs both end up on physical GPU 0. Fix: don't touch `CUDA_VISIBLE_DEVICES` in code, pass the physical device id directly (`device=2`).
 
-The fix is to **not touch `CUDA_VISIBLE_DEVICES` in our code at all** and just pass the physical device id directly to ultralytics: `device=2`. Verified by checking `nvidia-smi` for two distinct PIDs on two distinct GPUs after launching.
+### 9. YOLO26 NMS-free format auto-detection
 
-### 8. YOLO26 NMS-free format auto-detection
+YOLO26's headline architecture change is **end-to-end NMS** baked into the model graph. Exporting wound-seg with `nms=False` keeps post-NMS in the Swift package; the [`yolo-ios-app`](https://github.com/ethanlee928/yolo-ios-app) fork auto-detects from CoreML metadata (`userDefined["nms"]`) and adapts. So switching from YOLOv8 to YOLO26 required **zero Swift code changes**.
 
-YOLO26's headline architecture change is **end-to-end NMS** baked into the model graph. Exporting with the default `nms=True` produces a CoreML model where post-processing is part of the model itself. The fork of `yolo-ios-app` we depend on auto-detects this from the model's CoreML metadata (`userDefined["nms"]`) and skips its own post-NMS step. So switching from YOLOv8 to YOLO26 required **zero Swift code changes** — the package handled it.
+### 10. Strong reference during async model load
+
+The `YOLO` initializer returns synchronously but compiles on a background thread, calling a completion handler. Inside that handler, `[weak self]` means the `YOLO` instance has nothing else holding it alive — and gets deallocated mid-compile, silently failing to load. Store the returned instance into `self.model` *before* the completion fires:
+
+```swift
+let yolo = YOLO(variant.rawValue, task: .segment) { [weak self] result in ... }
+self.model = yolo  // strong ref keeps it alive through async compilation
+```
+
+---
+
+## Status & limitations
+
+- **Demonstrates feasibility** of on-device longitudinal tracking with depth-measured area on a consumer iPhone Pro. **Not clinically deployable** — no IRB, no clinical validation.
+- The cm² accuracy claim still needs a calibration experiment: printed circular targets at 20/25/30 cm × 0°/30°/45° tilt to defend the ±5% number.
+- The PI staging classifier is a placeholder; the slot is reserved for a DFUC-2021 infection/ischaemia model.
+- Auto wound re-identification across visits is manual today (the clinician picks which wound the assessment belongs to).
 
 ---
 
 ## Credits
 
-- **Models**: [Ultralytics YOLO26](https://docs.ultralytics.com/models/yolo26/) (segmentation variants)
+- **Models**: [Ultralytics YOLO26](https://docs.ultralytics.com/models/yolo26/) (segmentation + classification variants)
 - **iOS Swift package**: forked from [`ultralytics/yolo-ios-app`](https://github.com/ultralytics/yolo-ios-app) → [`ethanlee928/yolo-ios-app`](https://github.com/ethanlee928/yolo-ios-app)
 - **Wound dataset**: [AZH FUSeg](https://fusc.grand-challenge.org/) — Wang et al., *Fully automatic wound segmentation with deep convolutional neural networks*, Scientific Reports 10, 21897 (2020)
 - **Build tooling**: [`xcodegen`](https://github.com/yonaskolb/XcodeGen), [`uv`](https://github.com/astral-sh/uv)

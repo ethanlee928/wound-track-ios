@@ -1,8 +1,8 @@
-name: WoundDetector
+name: WoundTrack
 options:
   bundleIdPrefix: com.eleg5600
   deploymentTarget:
-    iOS: "16.0"
+    iOS: "17.0"
 
 packages:
   YOLO:
@@ -10,7 +10,7 @@ packages:
     branch: main
 
 targets:
-  WoundDetector:
+  WoundTrack:
     type: application
     platform: iOS
     settings:
@@ -40,19 +40,22 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
-        NSCameraUsageDescription: "WoundDetector needs camera access to take photos for wound detection and staging."
-        NSPhotoLibraryUsageDescription: "WoundDetector needs photo library access to select images for wound detection."
-        NSPhotoLibraryAddUsageDescription: "WoundDetector needs permission to save annotated wound images to your photo library."
+        NSCameraUsageDescription: "WoundTrack needs camera access to take photos for wound detection and staging."
+        NSPhotoLibraryUsageDescription: "WoundTrack needs photo library access to select images for wound detection."
+        NSPhotoLibraryAddUsageDescription: "WoundTrack needs permission to save annotated wound images to your photo library."
     dependencies:
       - package: YOLO
     scheme:
       testTargets:
-        - WoundDetectorTests
+        - WoundTrackTests
 
-  WoundDetectorTests:
+  WoundTrackTests:
     type: bundle.unit-test
     platform: iOS
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
     sources:
       - Tests
     dependencies:
-      - target: WoundDetector
+      - target: WoundTrack

@@ -15,7 +15,7 @@ import re
 import sys
 from pathlib import Path
 
-PBXPROJ = Path(__file__).resolve().parent.parent / "WoundDetector.xcodeproj" / "project.pbxproj"
+PBXPROJ = Path(__file__).resolve().parent.parent / "WoundTrack.xcodeproj" / "project.pbxproj"
 
 
 def main() -> int:
@@ -71,10 +71,10 @@ def main() -> int:
 
     # 4. Insert the build file references into the app target's PBXSourcesBuildPhase.
     #    We identify the app target's sources phase by finding the one that contains
-    #    WoundDetectorApp.swift.
+    #    WoundTrackApp.swift.
     def add_to_sources(match: re.Match[str]) -> str:
         block = match.group(0)
-        if "WoundDetectorApp.swift" not in block:
+        if "WoundTrackApp.swift" not in block:
             return block
         # Insert the new entries just before the closing ");" of files = (...)
         lines_to_add = "".join(
