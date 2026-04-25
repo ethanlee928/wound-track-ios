@@ -132,3 +132,5 @@ cp -R wound-yolo26n-seg.mlpackage ../WoundTrack/Resources/
 ```
 
 See the root [`README.md`](../README.md) for the rest of the iOS build pipeline.
+
+If you want to skip retraining and just reproduce the shipped weights, the prebuilt `.mlpackage` bundles and the fine-tuned `.pt` checkpoints are attached to the [v1.0.0 GitHub Release](https://github.com/ethanlee928/wound-track-ios/releases/tag/v1.0.0).
